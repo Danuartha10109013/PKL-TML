@@ -9,6 +9,14 @@ const routes = [
         path: "/test",
         component: () => import("../Pages/TestRoutes.vue"),
     },
+    {
+        path: "/pengecekan/create",
+        component: () => import("../Pages/PengecekanForm.vue"),
+    },
+    {
+        path: "/create",
+        component: () => import("../Pages/Create.vue"),
+    },
 ];
 
 export default createRouter({
