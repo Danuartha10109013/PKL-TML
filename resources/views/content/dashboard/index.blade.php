@@ -29,8 +29,17 @@
     </div>
   </div>
   <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row mb-3">
+      <div class="col-md-10"></div>
+      <div class="col-md-2">
+        @foreach ($data as $d)
+        <a class="btn btn-primary text-end" href="/mapping/{{$d->id}}">Mapping</a>
+      </div>
+    </div>
     <div class="row gy-4">
       <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-end">Data Goods Shippment</h1>
+
+  
 
       <div class="container">
         <div class="row">
@@ -41,7 +50,7 @@
           
           <!-- Kolom 2: "Speddpanell Systemm" -->
           <div class="col-md-2">
-            <div class="text-justify">Speddpanell Systemmmmmmmmmmm mmmmmmmmmmmmmmmmm</div>
+            <div class="text-justify">{{$d->Kepada}}</div>
           </div>
           <div class="col-md-3"></div>
           
@@ -51,46 +60,46 @@
               <tbody>
                 <tr>
                   <th>No. GS</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->no_gs}}</td>
                 </tr>
                 <tr>
                   <th>Tgl GS</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->tgl_gs}}</td>
                 </tr>
                 <tr>
                   <th>No. SO</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->no_so}}</td>
                 </tr>
                 <tr>
                   <th>No. PO</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->no_po}}</td>
                 </tr>
                 <tr>
                   <th>DO Number</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->no_do}}</td>
                 </tr>
                 <tr>
                   <th>Container No</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->no_container}}</td>
                 </tr>
                 <tr>
                   <th>Seal No</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->no_seal}}</td>
                 </tr>
                 <tr>
                   <th>No Mobil</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->no_mobil}}</td>
                 </tr>
                 <tr>
                   <th>Forwarding</th>
-                  <td class="text-end">5.43748E+14</td>
+                  <td class="text-end">{{$d->forwarding}}</td>
                 </tr>
               </tbody>
             </table>            
           </div>
         </div>
       </div>
-      
+      @endforeach
       
       <!-- Congratulations card -->
       {{-- <div class="col-md-12 col-lg-4">
@@ -210,7 +219,7 @@
         <thead class="table-light">
           <tr>
             <th class="text-truncate">No</th>
-            <th class="text-truncate">Kpde Produk</th>
+            <th class="text-truncate">Kode Produk</th>
             <th class="text-truncate">Produk</th>
             <th class="text-truncate">Quantity</th>
             <th class="text-truncate">Deskripsi</th>
@@ -219,19 +228,23 @@
           </tr>
         </thead>
         <tbody>
+          @foreach ($coil as $c)
+
           <tr>
-            <td>1</td>
-            <td>SL24-109295</td>
-            <td class="text-truncate">0.40mm x 385.5mm Z200 G250 NEXIUMr</td>
-            <td class="text-truncate">4,092 Kg</td>
-            <td>A-B-C</td>
-            <td> <span class="btn btn-danger"></span>Acitvate</td>
+            <td>{{$loop->iteration}}</td>
+            <td>{{$c->kode_produk}}</td>
+            <td class="text-truncate">{{$c->nama_produk}}</td>
+            <td class="text-truncate">{{$c->berat_produk}} Kg</td>
+            <td>{{$c->keterangan}}</td>
+            <td> <span class="btn btn-danger">Acitvate</span></td>
           </tr>
+          @endforeach
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
 <!--/ Data Tables -->
       <!-- Weekly Overview Chart -->
       {{-- <div class="col-xl-4 col-md-6">
