@@ -18,9 +18,9 @@ use App\Http\Controllers\PengecekanController;
 
 
 Route::get('/shipment/{id}', [DashboardController::class, 'show'])->name('show-shipment');
-Route::get('/mapping', [MappingController::class, 'index'])->name('maping-shipment');
+Route::get('/mapping/{id}', [MappingController::class, 'index'])->name('maping-shipment');
 
-Route::post('/mapping/create', [MappingController::class, 'store'])->name('store-cek');
-// Route::post('/pengecekan', [MappingController::class, 'store'])->name('store-cek');
+Route::post('/store', [MappingController::class, 'store']);
+
 
 

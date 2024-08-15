@@ -7,7 +7,7 @@
     <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">MAPPING MUAT & CEKLIST KONTAINER & TRAILER</h1>
     @foreach ($data as $d)
     <h4 class="app-brand-text demo menu-text fw-bold ms-1 text-center">No Gs : {{$d->no_gs}}</h4>
-    <form action="{{route('store-cek')}}" method="POST">
+    <form action="{{url('store')}}" method="POST">
         @csrf
         <div class="row">
             <!-- Basic -->
@@ -47,7 +47,7 @@
                             <input
                                 type="date"
                                 class="form-control"
-                                name="tanggal"
+                                name="tgl_gs"
                                 aria-label="Username"
                                 aria-describedby="basic-addon41"
                                 value="{{$d->tgl_gs}}" readonly />
@@ -142,6 +142,8 @@
                                         </div>
                                     @enderror
                                 </div>
+                                
+                                
                                 <div class="col-md-4">
                                     <span>Vacum</span>
                                     <div class="form-check">
@@ -422,6 +424,7 @@
                     <span class="input-group-text">Catatan</span>
                     <textarea
                         class="form-control"
+                        name="catatan"
                         aria-label="With textarea"
                         placeholder="Comment"
                         style="height: 60px"></textarea>

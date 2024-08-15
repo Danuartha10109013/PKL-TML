@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 
 class MappingController extends Controller
 {
-    public function index()
-    {$id=1;
+    public function index($id)
+    {
         // Mengambil data Shipment berdasarkan id
         $data = Shipment::where('id',$id)->get();
         $same = Shipment::where('id',$id)->value('no_gs');
@@ -23,76 +23,73 @@ class MappingController extends Controller
 
 
     public function store(Request $request)
-    {
-        // dd($request->all());
-        // Validasi input
+{
+   
+        // Validasi data input
         $validatedData = $request->validate([
-            'awal_muat'          => 'required|date_format:H:i',
-            'tgl_gs'          => 'required|date',
-            'customer'        => 'required|string|max:255',
-            'kota_negara'        => 'required|string|max:255',
-            'lantai'             => 'required|string',
-            'dinding'            => 'required|string',
-            'pengunci_kontainer' => 'required|string',
-            'sapu'               => 'required|string',
-            'vacum'              => 'required|string',
-            'disemprot'          => 'required|string',
-            'choke'              => 'required|integer',
-            'stopper'            => 'required|integer',
-            'silica_gel'         => 'required|integer',
-            'fumigasi'           => 'required|string',
-            'selesai_muat'       => 'required|date_format:H:i',
-            'no_mobil'           => 'required|string',
-            'no_container'           => 'required|string',
-            'tonase_tare'           => 'required',
-            'cuaca'              => 'required|string',
-            'kondisi_ban'        => 'required|string',
-            'kondisi_lantai'     => 'required|string',
-            'rantai_webbing'     => 'required|string',
-            'tonase'             => 'required|string',
-            'terpal'             => 'required|string',
-            'stuffing'           => 'required|string', 
-            'catatan'           => 'string' 
+            'awal_muat' => 'required|string',
+            'tgl_gs' => 'required|date',
+            'kota_negara' => 'required|string',
+            'customer' => 'required|string',
+            'lantai' => 'nullable|string',
+            'dinding' => 'nullable|string',
+            'pengunci_kontainer' => 'nullable|string',
+            'sapu' => 'nullable|in:sudah,belum',
+            'vacum' => 'nullable|string',
+            'disemprot' => 'nullable|string',
+            'choke' => 'nullable|string',
+            'stopper' => 'nullable|string',
+            'sling' => 'nullable|string',
+            'silica_gel' => 'nullable|string',
+            'fumigasi' => 'nullable|string',
+            'selesai_muat' => 'nullable|string',
+            'cuaca' => 'nullable|string',
+            'kondisi_ban' => 'nullable|string',
+            'kondisi_lantai' => 'nullable|string',
+            'rantai_webbing' => 'nullable|string',
+            'tonase' => 'nullable|string',
+            'terpal' => 'nullable|string',
+            'stuffing' => 'nullable|string',
+            'no_mobil' => 'nullable|string',
+            'no_container' => 'nullable|string',
+            'tonase_tare' => 'nullable|string',
+            'catatan' => 'nullable|string',
         ]);
-        
-        Pengecekan::create($validatedData);
-        
 
-        // Menyimpan data ke dalam tabel pengecekan
-        // Pengecekan::create([
-        //     'awal_muat'          => $validatedData['awal_muat'],
-        //     'tgl_gs'             => $validatedData['tgl_gs'],
-        //     'customer'           => $validatedData['customer'],
-        //     'kota_negara'        => $validatedData['kota_negara'],
-        //     'lantai'            => $validatedData['lantai'],
-        //     'dinding'           => $validatedData['dinding'],
-        //     'pengunci_kontainer' => $validatedData['pengunci_kontainer'],
-        //     'sapu'              => $validatedData['sapu'],
-        //     'vacum'             => $validatedData['vacum'],
-        //     'disemprot'         => $validatedData['disemprot'],
-        //     'choke'             => $validatedData['choke'],
-        //     'stopper'           => $validatedData['stopper'],
-        //     'silica_gel'        => $validatedData['silica_gel'],
-        //     'fumigasi'          => $validatedData['fumigasi'],
-        //     'selesai_muat'      => $validatedData['selesai_muat'],
-        //     'no_mobil'          => $validatedData['no_mobil'],
-        //     'no_container'      => $validatedData['no_container'],
-        //     'tonase_tare'       => $validatedData['tonase_tare'],
-        //     'cuaca'             => $validatedData['cuaca'],
-        //     'kondisi_ban'       => $validatedData['kondisi_ban'],
-        //     'kondisi_lantai'    => $validatedData['kondisi_lantai'],
-        //     'rantai_webbing'    => $validatedData['rantai_webbing'],
-        //     'tonase'            => $validatedData['tonase'],
-        //     'terpal'            => $validatedData['terpal'],
-        //     'stuffing'          => $validatedData['stuffing'],
-        //     'catatan'          => $validatedData['catatan'],
-        // ]);
-        
-        // Mengatur respon setelah data disimpan
-        // return redirect()->route('pengecekan.index')->with('success', 'Pengecekan berhasil disimpan.');
-        return "Data Berhasil disimpan";
+        // Buat instance baru dari model Pengecekan
+        $pengecekan = new Pengecekan();
+        $pengecekan->awal_muat = $validatedData['awal_muat'];
+        $pengecekan->tgl_gs = $validatedData['tgl_gs'];
+        $pengecekan->kota_negara = $validatedData['kota_negara'];
+        $pengecekan->customer = $validatedData['customer'];
+        $pengecekan->lantai = $validatedData['lantai'];
+        $pengecekan->dinding = $validatedData['dinding'];
+        $pengecekan->pengunci_kontainer = $validatedData['pengunci_kontainer'];
+        $pengecekan->sapu = $validatedData['sapu'];
+        $pengecekan->vacum = $validatedData['vacum'];
+        $pengecekan->disemprot = $validatedData['disemprot'];
+        $pengecekan->choke = $validatedData['choke'];
+        $pengecekan->stopper = $validatedData['stopper'];
+        $pengecekan->sling = $validatedData['sling'];
+        $pengecekan->silica_gel = $validatedData['silica_gel'];
+        $pengecekan->fumigasi = $validatedData['fumigasi'];
+        $pengecekan->selesai_muat = $validatedData['selesai_muat'];
+        $pengecekan->cuaca = $validatedData['cuaca'];
+        $pengecekan->kondisi_ban = $validatedData['kondisi_ban'];
+        $pengecekan->kondisi_lantai = $validatedData['kondisi_lantai'];
+        $pengecekan->rantai_webbing = $validatedData['rantai_webbing'];
+        $pengecekan->tonase = $validatedData['tonase'];
+        $pengecekan->terpal = $validatedData['terpal'];
+        $pengecekan->stuffing = $validatedData['stuffing'];
+        $pengecekan->no_mobil = $validatedData['no_mobil'];
+        $pengecekan->no_container = $validatedData['no_container'];
+        $pengecekan->tonase_tare = $validatedData['tonase_tare'];
+        $pengecekan->catatan = $validatedData['catatan'];
+
+        // Simpan data ke database
+        $pengecekan->save();
+
+        // Kembalikan pesan sukses
+        return "Data Berhasil Disimpan";
     }
-
-    
-
 }
