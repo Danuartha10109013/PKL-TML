@@ -5,8 +5,9 @@
 @section('content')
 <div class="container-xxl">
     <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">MAPPING MUAT & CEKLIST KONTAINER & TRAILER</h1>
-<div class="row">
     @foreach ($data as $d)
+    <h4 class="app-brand-text demo menu-text fw-bold ms-1 text-center">No Gs : {{$d->no_gs}}</h4>
+<div class="row">
         
     
     <!-- Basic -->
@@ -283,8 +284,23 @@
 
             </div>
       </div>
+      <div class="card mb-4">
+          <h5 class="card-header">Posisi Stufing</h5>
+          <div class="card-body demo-vertical-spacing demo-only-element">
+              <div class="input-group">
+                  <span class="input-group-text" id="basic-addon41">Type Stuffing</span>
+                  <select class="form-select" id="floorRating" name="fumigasi" aria-label="Floor Rating">
+                      <option value="sky">Eye to Sky</option>
+                      <option value="side">Eye to Side</option>
+                      <option value="rear">Eye to Rear</option>
+                  </select>
+              </div>
+          </div>
+      </div>
     </div>
+
 </div>
+
 
 
 <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">MAPPING KONTAINER</h1>
