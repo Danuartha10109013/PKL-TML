@@ -70,7 +70,7 @@
                                 type="text"
                                 class="form-control @error('kota_negara') is-invalid @enderror"
                                 name="kota_negara"
-                                placeholder="Jakarta"
+                                placeholder="Ketikan Kota / Negara tujuan"
                                 aria-label="Kota / Negara"
                                 aria-describedby="basic-addon41"
                                 value="{{ old('kota_negara') }}" />
@@ -86,6 +86,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Lantai</span>
                             <select class="form-select @error('lantai') is-invalid @enderror" name="lantai" aria-label="Floor Rating">
+                                <option value="" disabled selected>-- Pilih Kondisi Lantai --</option>
                                 <option value="bagus" {{ old('lantai') == 'bagus' ? 'selected' : '' }}>Bagus</option>
                                 <option value="kurang_bagus" {{ old('lantai') == 'kurang_bagus' ? 'selected' : '' }}>Kurang Bagus</option>
                                 <option value="jelek" {{ old('lantai') == 'jelek' ? 'selected' : '' }}>Jelek</option>
@@ -100,6 +101,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Dinding</span>
                             <select class="form-select @error('dinding') is-invalid @enderror" name="dinding" aria-label="Floor Rating">
+                                <option value="" disabled selected>-- Pilih Kondisi Dinding --</option>
                                 <option value="bagus" {{ old('dinding') == 'bagus' ? 'selected' : '' }}>Bagus</option>
                                 <option value="kurang_bagus" {{ old('dinding') == 'kurang_bagus' ? 'selected' : '' }}>Kurang Bagus</option>
                                 <option value="jelek" {{ old('dinding') == 'jelek' ? 'selected' : '' }}>Jelek</option>
@@ -114,6 +116,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Pengunci Kontainer</span>
                             <select class="form-select @error('pengunci_kontainer') is-invalid @enderror" name="pengunci_kontainer" aria-label="Pengunci Kontainer">
+                                <option value="" disabled selected>-- Pilih Tipe Pengunci --</option>
                                 <option value="4_pengunci" {{ old('pengunci_kontainer') == '4_pengunci' ? 'selected' : '' }}>4 Pengunci</option>
                                 <option value="<4_pengunci" {{ old('pengunci_kontainer') == '<4_pengunci' ? 'selected' : '' }}>< 4 Pengunci</option>
                             </select>
@@ -129,11 +132,11 @@
                                 <div class="col-md-4">
                                     <span>Disapu</span>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuSudah" name="sapu" value="sudah" {{ old('sapu') == 'sudah' ? 'checked' : '' }}>
+                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuSudah" name="sapu" value="sudah" {{ old('sapu') == 'sudah' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="sapuSudah">Sudah</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuBelum" name="sapu" value="belum" {{ old('sapu') == 'belum' ? 'checked' : '' }}>
+                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuBelum" name="sapu" value="belum" {{ old('sapu') == 'belum' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="sapuBelum">Belum</label>
                                     </div>
                                     @error('sapu')
@@ -147,11 +150,11 @@
                                 <div class="col-md-4">
                                     <span>Vacum</span>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumSudah" name="vacum" value="sudah" {{ old('vacum') == 'sudah' ? 'checked' : '' }}>
+                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumSudah" name="vacum" value="sudah" {{ old('vacum') == 'sudah' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="vacumSudah">Sudah</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumBelum" name="vacum" value="belum" {{ old('vacum') == 'belum' ? 'checked' : '' }}>
+                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumBelum" name="vacum" value="belum" {{ old('vacum') == 'belum' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="vacumBelum">Belum</label>
                                     </div>
                                     @error('vacum')
@@ -163,11 +166,11 @@
                                 <div class="col-md-4">
                                     <span>Disemprot</span>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotSudah" name="disemprot" value="sudah" {{ old('disemprot') == 'sudah' ? 'checked' : '' }}>
+                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotSudah" name="disemprot" value="sudah" {{ old('disemprot') == 'sudah' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="disemprotSudah">Sudah</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotBelum" name="disemprot" value="belum" {{ old('disemprot') == 'belum' ? 'checked' : '' }}>
+                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotBelum" name="disemprot" value="belum" {{ old('disemprot') == 'belum' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="disemprotBelum">Belum</label>
                                     </div>
                                     @error('disemprot')
@@ -250,6 +253,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Fumigasi</span>
                             <select class="form-select @error('fumigasi') is-invalid @enderror" name="fumigasi" aria-label="Fumigasi">
+                                <option value="" disabled selected>-- Pilih Kondisi Fumigasi --</option>
                                 <option value="iya" {{ old('fumigasi') == 'iya' ? 'selected' : '' }}>Iya</option>
                                 <option value="tidak" {{ old('fumigasi') == 'tidak' ? 'selected' : '' }}>Tidak</option>
                             </select>
@@ -297,18 +301,7 @@
                                 aria-describedby="basic-addon41"
                                 value="{{$d->no_mobil}}" readonly />
                         </div>
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon41">Tonase / Tare</span>
-                            <input
-                                type="text"
-                                class="form-control"
-                                name="tonase_tare"
-                                placeholder="T 1000 TU"
-                                aria-label="Username"
-                                aria-describedby="basic-addon41"
-                                value="{{$tonase}}" readonly />
-                        </div>
-                        
+
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">No Kontainer</span>
                             <input
@@ -320,10 +313,11 @@
                                 aria-describedby="basic-addon41"
                                 value="{{$d->no_container}}" readonly />
                         </div>
-                    
+
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Cuaca</span>
                             <select class="form-select @error('cuaca') is-invalid @enderror" name="cuaca" aria-label="Cuaca">
+                                <option value="" disabled selected>-- Pilih Kondisi Cuaca --</option>
                                 <option value="cerah" {{ old('cuaca') == 'cerah' ? 'selected' : '' }}>Cerah</option>
                                 <option value="berawan" {{ old('cuaca') == 'berawan' ? 'selected' : '' }}>Berawan</option>
                                 <option value="hujan" {{ old('cuaca') == 'hujan' ? 'selected' : '' }}>Hujan</option>
@@ -336,8 +330,23 @@
                         </div>
 
                         <div class="input-group">
+                            <span class="input-group-text" id="basic-addon41">Tonase / Tare</span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="tonase_tare"
+                                placeholder="T 1000 TU"
+                                aria-label="Username"
+                                aria-describedby="basic-addon41"
+                                value="{{$tonase}}" readonly />
+                        </div>
+                        
+                        <p class="text-center" style="font-weight:bold;">TRAILER / TRUK</p>
+                    
+                        <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Kondisi Ban</span>
                             <select class="form-select @error('kondisi_ban') is-invalid @enderror" name="kondisi_ban" aria-label="Kondisi Ban">
+                                <option value="" disabled selected>-- Pilih Kondisi Ban --</option>
                                 <option value="bagus" {{ old('kondisi_ban') == 'bagus' ? 'selected' : '' }}>Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_ban') == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_ban') == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
@@ -352,6 +361,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Kondisi Lantai</span>
                             <select class="form-select @error('kondisi_lantai') is-invalid @enderror" name="kondisi_lantai" aria-label="Kondisi Lantai">
+                                <option value="" disabled selected>-- Pilih Kondisi Lantai --</option>
                                 <option value="bagus" {{ old('kondisi_lantai') == 'bagus' ? 'selected' : '' }}>Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_lantai') == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_lantai') == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
@@ -366,6 +376,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Rantai Webbing</span>
                             <select class="form-select @error('rantai_webbing') is-invalid @enderror" name="rantai_webbing" aria-label="Rantai Webbing">
+                                <option value="" disabled selected>-- Pilih Kondisi Rantai/Webbing --</option>
                                 <option value="lengkap" {{ old('rantai_webbing') == 'lengkap' ? 'selected' : '' }}>Lengkap</option>
                                 <option value="tidak lengkap" {{ old('rantai_webbing') == 'tidak lengkap' ? 'selected' : '' }}>Tidak Lengkap</option>
                                 <option value="tidak ada" {{ old('rantai_webbing') == 'tidak ada' ? 'selected' : '' }}>Tidak ada</option>
@@ -380,6 +391,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Tonase</span>
                             <select class="form-select @error('tonase') is-invalid @enderror" name="tonase" aria-label="Tonase">
+                                <option value="" disabled selected>-- Pilih Kondisi Tonase --</option>
                                 <option value="sesuai kapasitas" {{ old('tonase') == 'sesuai kapasitas' ? 'selected' : '' }}>Sesuai Kapasitas</option>
                                 <option value="tidak sesuai kapasitas" {{ old('tonase') == 'tidak sesuai kapasitas' ? 'selected' : '' }}>Tidak Sesuai Kapasitas</option>
                             </select>
@@ -393,6 +405,7 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Terpal</span>
                             <select class="form-select @error('terpal') is-invalid @enderror" name="terpal" aria-label="Terpal">
+                                <option value="" disabled selected>-- Pilih Kondisi Terpal --</option>
                                 <option value="bagus" {{ old('terpal') == 'bagus' ? 'selected' : '' }}>Bagus</option>
                                 <option value="jelek" {{ old('terpal') == 'jelek' ? 'selected' : '' }}>Jelek</option>
                             </select>
@@ -406,8 +419,9 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Stuffing</span>
                             <select class="form-select @error('stuffing') is-invalid @enderror" name="stuffing" aria-label="Stuffing">
+                                <option value="" disabled selected>-- Pilih Stuffing --</option>
                                 <option value="eye to sky" {{ old('stuffing') == 'eye to sky' ? 'selected' : '' }}>Eye to Sky</option>
-                                <option value="eye to slide" {{ old('stuffing') == 'eye to side' ? 'selected' : '' }}>Eye to Side</option>
+                                <option value="eye to side" {{ old('stuffing') == 'eye to side' ? 'selected' : '' }}>Eye to Side</option>
                                 <option value="eye to rear" {{ old('stuffing') == 'eye to rear' ? 'selected' : '' }}>Eye to Rear</option>
                             </select>
                             @error('stuffing')
@@ -416,22 +430,106 @@
                                 </div>
                             @enderror
                         </div>
-                        
                     </div>
                 </div>
-                {{-- text area --}}
-                <div class="input-group mb-5">
-                    <span class="input-group-text">Catatan</span>
-                    <textarea
-                        class="form-control"
-                        name="catatan"
-                        aria-label="With textarea"
-                        placeholder="Comment"
-                        style="height: 60px"></textarea>
-                    </div>
+                
             </div>
         </div>
 
+        <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">
+            MAPPING KONTAINER
+        </h1>
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <div class="row mb-4">
+                    <div class="col-md-12 bg-danger text-white text-center p-3">
+                        <h3>KONTAINER</h3>
+                    </div>
+                </div>
+        
+                
+                    @csrf
+                    <div class="row">
+                        @for ($i = 0; $i < 15; $i++)
+                        <div class="col-md-4 mb-3">
+                            <div class="input-group">
+                                @php
+                                    $row = intdiv($i, 3) + 1;
+                                    $column = chr(65 + ($i % 3));
+                                    $coordinate = strtolower($column . $row);
+                                @endphp
+                                <label class="fw-bold mb-1">{{ strtoupper($coordinate) }}</label>
+                                <select
+                                    class="form-select"
+                                    name="{{ $coordinate }}"
+                                    aria-label="Floor Rating"
+                                >
+                                    <option value="">Pilih</option>
+                                    @foreach ($coil as $c)
+                                    <option value="{{ $c->kode_produk }}">
+                                        {{ substr($c->kode_produk, -5) }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        @if (($i + 1) % 3 == 0)
+                        <div class="w-100"></div>
+                        @endif
+                        @endfor
+                    </div>
+                    
+            </div>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const selects = document.querySelectorAll(
+                    'select[name^="a"], select[name^="b"], select[name^="c"]'
+                );
+        
+                function updateOptions() {
+                    const selectedValues = Array.from(selects)
+                        .map((s) => s.value)
+                        .filter((v) => v);
+        
+                    selects.forEach((select) => {
+                        const options = select.querySelectorAll("option");
+                        options.forEach((option) => {
+                            if (
+                                selectedValues.includes(option.value) &&
+                                option.value !== select.value
+                            ) {
+                                option.style.display = "none";
+                            } else {
+                                option.style.display = "";
+                            }
+                        });
+                    });
+                }
+        
+                selects.forEach((select) => {
+                    select.addEventListener("change", updateOptions);
+                });
+        
+                // Initial call to hide selected options on page load
+                updateOptions();
+            });
+        </script>
+        
+        
+    
+       {{-- text area --}}
+       <div class="input-group mb-5">
+        <span class="input-group-text">Catatan</span>
+        <textarea
+            class="form-control"
+            name="catatan"
+            aria-label="With textarea"
+            placeholder="Comment"
+            style="height: 60px"></textarea>
+        </div>
+    
+        
 
         <button type="submit" class="btn btn-primary mb-5">Simpan</button>
     </form>

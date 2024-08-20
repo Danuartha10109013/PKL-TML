@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coil;
+use App\Models\MapCoil;
 use App\Models\Pengecekan;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
@@ -31,29 +32,47 @@ class MappingController extends Controller
             'tgl_gs' => 'required|date',
             'kota_negara' => 'required|string',
             'customer' => 'required|string',
-            'lantai' => 'nullable|string',
-            'dinding' => 'nullable|string',
-            'pengunci_kontainer' => 'nullable|string',
-            'sapu' => 'nullable|in:sudah,belum',
-            'vacum' => 'nullable|string',
-            'disemprot' => 'nullable|string',
-            'choke' => 'nullable|string',
-            'stopper' => 'nullable|string',
-            'sling' => 'nullable|string',
-            'silica_gel' => 'nullable|string',
-            'fumigasi' => 'nullable|string',
-            'selesai_muat' => 'nullable|string',
-            'cuaca' => 'nullable|string',
-            'kondisi_ban' => 'nullable|string',
-            'kondisi_lantai' => 'nullable|string',
-            'rantai_webbing' => 'nullable|string',
-            'tonase' => 'nullable|string',
-            'terpal' => 'nullable|string',
-            'stuffing' => 'nullable|string',
-            'no_mobil' => 'nullable|string',
-            'no_container' => 'nullable|string',
-            'tonase_tare' => 'nullable|string',
-            'catatan' => 'nullable|string',
+            'lantai' => 'required|string',
+            'dinding' => 'required|string',
+            'pengunci_kontainer' => 'required|string',
+            'sapu' => 'required|in:sudah,belum',
+            'vacum' => 'required|string',
+            'disemprot' => 'required|string',
+            'choke' => 'required|string',
+            'stopper' => 'required|string',
+            'sling' => 'required|string',
+            'silica_gel' => 'required|string',
+            'fumigasi' => 'required|string',
+            'selesai_muat' => 'required|string',
+            'cuaca' => 'required|string',
+            'kondisi_ban' => 'required|string',
+            'kondisi_lantai' => 'required|string',
+            'rantai_webbing' => 'required|string',
+            'tonase' => 'required|string',
+            'terpal' => 'required|string',
+            'stuffing' => 'required|in:eye to sky,eye to side,eye to rear',
+            'no_mobil' => 'required|string',
+            'no_container' => 'required|string',
+            'tonase_tare' => 'required|string',
+            'catatan' => 'required|string',
+            'no_gs' => 'required|string',
+            //mPPING
+            
+            'a1' => 'nullable|string|max:255',
+            'a2' => 'nullable|string|max:255',
+            'a3' => 'nullable|string|max:255',
+            'a4' => 'nullable|string|max:255',
+            'a5' => 'nullable|string|max:255',
+            'b1' => 'nullable|string|max:255',
+            'b2' => 'nullable|string|max:255',
+            'b3' => 'nullable|string|max:255',
+            'b4' => 'nullable|string|max:255',
+            'b5' => 'nullable|string|max:255',
+            'c1' => 'nullable|string|max:255',
+            'c2' => 'nullable|string|max:255',
+            'c3' => 'nullable|string|max:255',
+            'c4' => 'nullable|string|max:255',
+            'c5' => 'nullable|string|max:255'
         ]);
 
         // Buat instance baru dari model Pengecekan
@@ -85,11 +104,35 @@ class MappingController extends Controller
         $pengecekan->no_container = $validatedData['no_container'];
         $pengecekan->tonase_tare = $validatedData['tonase_tare'];
         $pengecekan->catatan = $validatedData['catatan'];
+        $pengecekan->no_gs = $validatedData['no_gs'];
 
         // Simpan data ke database
         $pengecekan->save();
 
+        //mapcoil
+        $mapCoil = new MapCoil();
+        $mapCoil->no_gs = $validatedData['no_gs'];
+        $mapCoil->a1 = $validatedData['a1'];
+        $mapCoil->a2 = $validatedData['a2'];
+        $mapCoil->a3 = $validatedData['a3'];
+        $mapCoil->a4 = $validatedData['a4'];
+        $mapCoil->a5 = $validatedData['a5'];
+        $mapCoil->b1 = $validatedData['b1'];
+        $mapCoil->b2 = $validatedData['b2'];
+        $mapCoil->b3 = $validatedData['b3'];
+        $mapCoil->b4 = $validatedData['b4'];
+        $mapCoil->b5 = $validatedData['b5'];
+        $mapCoil->c1 = $validatedData['c1'];
+        $mapCoil->c2 = $validatedData['c2'];
+        $mapCoil->c3 = $validatedData['c3'];
+        $mapCoil->c4 = $validatedData['c4'];
+        $mapCoil->c5 = $validatedData['c5'];
+
+        // Simpan data ke database
+        $mapCoil->save();
+
         // Kembalikan pesan sukses
-        return "Data Berhasil Disimpan";
+        return redirect(url('print/' . $validatedData['no_gs']));
+
     }
 }
