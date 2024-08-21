@@ -33,6 +33,23 @@
                         </div>
                         
                         <div class="input-group">
+                            <span class="input-group-text" id="basic-addon41">Awal Muat 1</span>
+                            <input
+                                type="time"
+                                class="form-control @error('awal_muat') is-invalid @enderror"
+                                name="awal_muat1"
+                                placeholder="09.00"
+                                aria-label="Awal Muat"
+                                aria-describedby="basic-addon41"
+                                value="{{ old('awal_muat') }}" />
+                            @error('awal_muat')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="input-group">
                             
                             <input
                                 type="text"
@@ -330,7 +347,7 @@
                         </div>
 
                         <div class="input-group">
-                            <span class="input-group-text" id="basic-addon41">Tonase / Tare</span>
+                            <span class="input-group-text" id="basic-addon41">Tonase </span>
                             <input
                                 type="text"
                                 class="form-control"
@@ -339,6 +356,23 @@
                                 aria-label="Username"
                                 aria-describedby="basic-addon41"
                                 value="{{$tonase}}" readonly />
+                        </div>
+                        
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon41">Tare</span>
+                            <input
+                                type="number"
+                                class="form-control @error('tare') is-invalid @enderror"
+                                name="tare"
+                                placeholder="0"
+                                aria-label="Sling"
+                                aria-describedby="basic-addon41"
+                                value="{{ old('tare') }}" />
+                            @error('tare')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         
                         <p class="text-center" style="font-weight:bold;">TRAILER / TRUK</p>
@@ -447,76 +481,84 @@
                     </div>
                 </div>
         
-                
-                    @csrf
-                    <div class="row">
-                        @for ($i = 0; $i < 15; $i++)
-                        <div class="col-md-4 mb-3">
-                            <div class="input-group">
-                                @php
-                                    $row = intdiv($i, 3) + 1;
-                                    $column = chr(65 + ($i % 3));
-                                    $coordinate = strtolower($column . $row);
-                                @endphp
-                                <label class="fw-bold mb-1">{{ strtoupper($coordinate) }}</label>
-                                <select
-                                    class="form-select"
-                                    name="{{ $coordinate }}"
-                                    aria-label="Floor Rating"
-                                >
-                                    <option value="">Pilih</option>
-                                    @foreach ($coil as $c)
-                                    <option value="{{ $c->kode_produk }}">
-                                        {{ substr($c->kode_produk, -5) }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
+                @csrf
+                <div class="row">
+                    @for ($i = 0; $i < 15; $i++)
+                    <div class="col-md-4 mb-3">
+                        <div class="input-group">
+                            @php
+                                $row = intdiv($i, 3) + 1;
+                                $column = chr(65 + ($i % 3)); // A, B, C
+                                $coordinate = strtolower($column . $row); // a1, a2, ..., c5
+                            @endphp
+                            <label class="fw-bold mb-1">{{ strtoupper($coordinate) }}</label>
+                            <select
+                                class="form-select coil-select"
+                                name="{{ $coordinate }}"
+                                aria-label="Floor Rating"
+                            >
+                                <option value="">Pilih</option>
+                                @foreach ($coil as $c)
+                                <option value="{{ $c->kode_produk }}">
+                                    {{ substr($c->kode_produk, -5) }}
+                                </option>
+                                @endforeach
+                            </select>
+                            <input type="hidden" name="{{ $coordinate }}_eye" value="null">
+                            <select
+                                class="form-select ms-2"
+                                name="{{ $coordinate }}_eye"
+                                aria-label="Eye Position"
+                                disabled
+                            >
+                                <option value="">Pilih Posisi</option>
+                                <option value="eye_to_side">Eye to Side</option>
+                                <option value="eye_to_rear">Eye to Rear</option>
+                                <option value="eye_to_sky">Eye to Sky</option>
+                            </select>
                         </div>
-                        @if (($i + 1) % 3 == 0)
-                        <div class="w-100"></div>
-                        @endif
-                        @endfor
                     </div>
-                    
+                    @if (($i + 1) % 3 == 0)
+                    <div class="w-100"></div>
+                    @endif
+                    @endfor
+                </div>
+        
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const coilSelects = Array.from(document.querySelectorAll('.coil-select'));
+        
+                        function updateOptions() {
+                            const selectedValues = coilSelects.map(select => select.value).filter(value => value);
+        
+                            coilSelects.forEach((select) => {
+                                const options = select.querySelectorAll("option");
+                                options.forEach((option) => {
+                                    if (option.value !== "") {
+                                        option.style.display = selectedValues.includes(option.value) && option.value !== select.value ? "none" : "";
+                                    }
+                                });
+        
+                                const eyeSelect = document.querySelector(`select[name="${select.name}_eye"]`);
+                                if (eyeSelect) {
+                                    eyeSelect.disabled = !select.value;
+                                }
+                            });
+                        }
+        
+                        coilSelects.forEach((select) => {
+                            select.addEventListener("change", updateOptions);
+                        });
+        
+                        // Initial call to set the correct state on page load
+                        updateOptions();
+                    });
+                </script>
+        
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
             </div>
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const selects = document.querySelectorAll(
-                    'select[name^="a"], select[name^="b"], select[name^="c"]'
-                );
-        
-                function updateOptions() {
-                    const selectedValues = Array.from(selects)
-                        .map((s) => s.value)
-                        .filter((v) => v);
-        
-                    selects.forEach((select) => {
-                        const options = select.querySelectorAll("option");
-                        options.forEach((option) => {
-                            if (
-                                selectedValues.includes(option.value) &&
-                                option.value !== select.value
-                            ) {
-                                option.style.display = "none";
-                            } else {
-                                option.style.display = "";
-                            }
-                        });
-                    });
-                }
-        
-                selects.forEach((select) => {
-                    select.addEventListener("change", updateOptions);
-                });
-        
-                // Initial call to hide selected options on page load
-                updateOptions();
-            });
-        </script>
-        
-        
+         
     
        {{-- text area --}}
        <div class="input-group mb-5">

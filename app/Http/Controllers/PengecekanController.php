@@ -22,6 +22,7 @@ class PengecekanController extends Controller
     {
         $request->validate([
             'awal_muat' => 'required|date_format:H:i',
+            'awal_muat1' => 'required|date_format:H:i',
             'kota_negara' => 'required|string',
             'lantai' => 'required|string',
             'dinding' => 'required|string',
@@ -59,6 +60,7 @@ class PengecekanController extends Controller
     {
         $request->validate([
             'awal_muat' => 'required|date_format:H:i',
+            'awal_muat1' => 'required|date_format:H:i',
             'kota_negara' => 'required|string',
             'lantai' => 'required|string',
             'dinding' => 'required|string',

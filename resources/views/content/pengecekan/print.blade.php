@@ -270,7 +270,7 @@
                             @if($c->a1)
                                <p class="mt-1"><b> {{ $c->a1 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imga1.'.png')}}" alt="{{$imga1a1}}">
+                               <img width="30%" src="{{asset('img/'.$c->a1_eye.'.png')}}" alt="{{$c->a1_eye}}">
                             @else
                             {{ $c->a1 }}
                             @endif
@@ -280,7 +280,7 @@
                             @if($c->b1)
                                <p class="mt-2"><b> {{ $c->b1 }} </b></p>
                                
-                               <img width="50%" src="{{asset('img/'.$imgb1.'.png')}}" alt="{{$imgb1}}">
+                               <img width="30%" src="{{asset('img/'.$c->b1_eye.'.png')}}" alt="{{$c->b1_eye}}">
                             @else
                             {{ $c->b1 }}
                             @endif
@@ -290,7 +290,7 @@
                             @if($c->c1)
                                <p class="mt-2"><b> {{ $c->c1 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgc1.'.png')}}" alt="{{$imgc1}}">
+                               <img width="30%" src="{{asset('img/'.$c->c1_eye.'.png')}}" alt="{{$c->c1_eye}}">
                             @else
                             {{ $c->c1 }}
                             @endif
@@ -303,7 +303,7 @@
                             @if($c->a2)
                                <p class="mt-2"><b> {{ $c->a2 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imga2.'.png')}}" alt="{{$imga2}}">
+                               <img width="30%" src="{{asset('img/'.$c->a2_eye.'.png')}}" alt="{{$c->a2_eye}}">
                             @else
                             {{ $c->a2 }}
                             @endif
@@ -313,7 +313,7 @@
                             @if($c->b2)
                                <p class="mt-2"><b> {{ $c->b2 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgb2.'.png')}}" alt="{{$imgb2}}">
+                               <img width="30%" src="{{asset('img/'.$c->b2_eye.'.png')}}" alt="{{$c->b2_eye}}">
                             @else
                             {{ $c->b2 }}
                             @endif
@@ -322,7 +322,7 @@
                             @if($c->c2)
                                <p class="mt-2"><b> {{ $c->c2 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgc2.'.png')}}" alt="{{$imgc2}}">
+                               <img width="30%" src="{{asset('img/'.$c->c2_eye.'.png')}}" alt="{{$c->c2_eye}}">
                             @else
                             {{ $c->c2 }}
                             @endif
@@ -333,7 +333,7 @@
                             @if($c->a3)
                                <p class="mt-2"><b> {{ $c->a3 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imga3.'.png')}}" alt="{{$imga3}}">
+                               <img width="30%" src="{{asset('img/'.$c->a3_eye.'.png')}}" alt="{{$c->a3_eye}}">
                             @else
                             {{ $c->a3 }}
                             @endif
@@ -343,7 +343,7 @@
                             @if($c->b3)
                                <p class="mt-2"><b> {{ $c->b3 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgb3.'.png')}}" alt="{{$imgb3}}">
+                               <img width="30%" src="{{asset('img/'.$c->b3_eye.'.png')}}" alt="{{$c->b3_eye}}">
                             @else
                             {{ $c->b3 }}
                             @endif
@@ -352,7 +352,7 @@
                             @if($c->c3)
                                <p class="mt-2"><b> {{ $c->c3 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgc3.'.png')}}" alt="{{$imgc3}}">
+                               <img width="30%" src="{{asset('img/'.$c->c3_eye.'.png')}}" alt="{{$c->c3_eye}}">
                             @else
                             {{ $c->c3 }}
                             @endif
@@ -363,7 +363,7 @@
                             @if($c->a4)
                                <p class="mt-2"><b> {{ $c->a4 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imga4.'.png')}}" alt="{{$imga4}}">
+                               <img width="30%" src="{{asset('img/'.$c->a4_eye.'.png')}}" alt="{{$c->a4_eye}}">
                             @else
                             {{ $c->a4 }}
                             @endif
@@ -373,7 +373,7 @@
                             @if($c->b4)
                                <p class="mt-2"><b> {{ $c->b4 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgb4.'.png')}}" alt="{{$imgb4}}">
+                               <img width="30%" src="{{asset('img/'.$c->b4_eye.'.png')}}" alt="{{$c->b4_eye}}">
                             @else
                             {{ $c->b4 }}
                             @endif
@@ -382,7 +382,7 @@
                             @if($c->c4)
                                <p class="mt-2"><b> {{ $c->c4 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgc4.'.png')}}" alt="{{$imgc4}}">
+                               <img width="30%" src="{{asset('img/'.$c->c4_eye.'.png')}}" alt="{{$c->c4_eye}}">
                             @else
                             {{ $c->c4 }}
                             @endif
@@ -393,7 +393,7 @@
                             @if($c->a5)
                                <p class="mt-2"><b> {{ $c->a5 }} </b></p>
                               
-                               <img width="30%" src="{{asset('img/'.$imga5.'.png')}}" alt="{{$imga5}}">
+                               <img width="30%" src="{{asset('img/'.$c->a5_eye.'.png')}}" alt="{{$c->a5_eye}}">
                             @else
                             {{ $c->a5 }}
                             @endif
@@ -403,7 +403,7 @@
                             @if($c->b5)
                                <p class="mt-2"><b> {{ $c->b5 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$imgb5.'.png')}}" alt="{{$imgb5}}">
+                               <img width="30%" src="{{asset('img/'.$c->b5_eye.'.png')}}" alt="{{$c->b5_eye}}">
                             @else
                             {{ $c->b5 }}
                             @endif
@@ -412,7 +412,7 @@
                             @if($c->c5)
                                <p class="mt-2"><b> {{ $c->c5 }} </b></p>
                               
-                               <img width="30%" src="{{asset('img/'.$imgc5.'.png')}}" alt="{{$imgc5}}">
+                               <img width="30%" src="{{asset('img/'.$c->c5_eye.'.png')}}" alt="{{$c->c5_eye}}">
                             @else
                             {{ $c->c5 }}
                             @endif
@@ -423,188 +423,7 @@
                 </table>
             
             </div>
-            <div class="col-md-6">
-                <div class="text-center mb-3" style="border: 1px solid #000000; max-width:90%" class="kotak">
-                    <p class="mt-2"><b >KONTAINER</b></p>
-                </div>
-                <style>
-                     .mapping {
-            width: 90%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        .mapping td {
-            border: 1px solid #000000;
-            padding: none;
-            text-align: center;
-        }
-        .mapping tr {
-            height: 4rem; /* Aturan khusus untuk tabel kedua */
-        }
-                </style>
-                {{-- <p class="text-center">DEPAN</p> --}}
-                <table class="mapping mb-5">
-                    @foreach ($coil as $c)
-                        
-                    
-                    <tr>
-                        <td width="100px">
-                            @if($c->a1)
-                               <p class="mt-1"><b> {{ $c->a1 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imga1.'.png')}}" alt="{{$imga1a1}}">
-                            @else
-                            {{ $c->a1 }}
-                            @endif
-                        </td>
-                        
-                        <td width="100px">
-                            @if($c->b1)
-                               <p class="mt-2"><b> {{ $c->b1 }} </b></p>
-                               
-                               <img width="50%" src="{{asset('img/'.$imgb1.'.png')}}" alt="{{$imgb1}}">
-                            @else
-                            {{ $c->b1 }}
-                            @endif
-                        </td>
-
-                        <td width="100px">
-                            @if($c->c1)
-                               <p class="mt-2"><b> {{ $c->c1 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgc1.'.png')}}" alt="{{$imgc1}}">
-                            @else
-                            {{ $c->c1 }}
-                            @endif
-                        </td>
-                       
-                    </tr>
-
-                    <tr>
-                        <td>
-                            @if($c->a2)
-                               <p class="mt-2"><b> {{ $c->a2 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imga2.'.png')}}" alt="{{$imga2}}">
-                            @else
-                            {{ $c->a2 }}
-                            @endif
-                        </td>
-                        
-                        <td>
-                            @if($c->b2)
-                               <p class="mt-2"><b> {{ $c->b2 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgb2.'.png')}}" alt="{{$imgb2}}">
-                            @else
-                            {{ $c->b2 }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($c->c2)
-                               <p class="mt-2"><b> {{ $c->c2 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgc2.'.png')}}" alt="{{$imgc2}}">
-                            @else
-                            {{ $c->c2 }}
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @if($c->a3)
-                               <p class="mt-2"><b> {{ $c->a3 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imga3.'.png')}}" alt="{{$imga3}}">
-                            @else
-                            {{ $c->a3 }}
-                            @endif
-                        </td>
-                        
-                        <td>
-                            @if($c->b3)
-                               <p class="mt-2"><b> {{ $c->b3 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgb3.'.png')}}" alt="{{$imgb3}}">
-                            @else
-                            {{ $c->b3 }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($c->c3)
-                               <p class="mt-2"><b> {{ $c->c3 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgc3.'.png')}}" alt="{{$imgc3}}">
-                            @else
-                            {{ $c->c3 }}
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @if($c->a4)
-                               <p class="mt-2"><b> {{ $c->a4 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imga4.'.png')}}" alt="{{$imga4}}">
-                            @else
-                            {{ $c->a4 }}
-                            @endif
-                        </td>
-                        
-                        <td>
-                            @if($c->b4)
-                               <p class="mt-2"><b> {{ $c->b4 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgb4.'.png')}}" alt="{{$imgb4}}">
-                            @else
-                            {{ $c->b4 }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($c->c4)
-                               <p class="mt-2"><b> {{ $c->c4 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgc4.'.png')}}" alt="{{$imgc4}}">
-                            @else
-                            {{ $c->c4 }}
-                            @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            @if($c->a5)
-                               <p class="mt-2"><b> {{ $c->a5 }} </b></p>
-                              
-                               <img width="30%" src="{{asset('img/'.$imga5.'.png')}}" alt="{{$imga5}}">
-                            @else
-                            {{ $c->a5 }}
-                            @endif
-                        </td>
-                        
-                        <td>
-                            @if($c->b5)
-                               <p class="mt-2"><b> {{ $c->b5 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$imgb5.'.png')}}" alt="{{$imgb5}}">
-                            @else
-                            {{ $c->b5 }}
-                            @endif
-                        </td>
-                        <td>
-                            @if($c->c5)
-                               <p class="mt-2"><b> {{ $c->c5 }} </b></p>
-                              
-                               <img width="30%" src="{{asset('img/'.$imgc5.'.png')}}" alt="{{$imgc5}}">
-                            @else
-                            {{ $c->c5 }}
-                            @endif
-                        </td>
-                    </tr>
-                    
-                    @endforeach
-                </table>
             
-            </div>
         </div>
         
        

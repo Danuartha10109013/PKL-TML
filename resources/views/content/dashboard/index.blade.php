@@ -287,7 +287,7 @@
       <!--/ Weekly Overview Chart -->
 
       <!-- Total Earnings -->
-      <div class="col-xl-4 col-md-6">
+      {{-- <div class="col-xl-4 col-md-6">
         <div class="card">
           <div class="card-header d-flex align-items-center justify-content-between">
             <h5 class="card-title m-0 me-2">Total Earning</h5>
@@ -392,11 +392,11 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> --}}
       <!--/ Total Earnings -->
 
       <!-- Four Cards -->
-      <div class="col-xl-4 col-md-6">
+      {{-- <div class="col-xl-4 col-md-6">
         <div class="row gy-4">
           <!-- Total Profit line chart -->
           <div class="col-sm-6">
@@ -499,7 +499,7 @@
           </div>
           <!--/ Sessions chart -->
         </div>
-      </div>
+      </div> --}}
       <!--/ Total Earning -->
 
       <!-- Sales by Countries -->
