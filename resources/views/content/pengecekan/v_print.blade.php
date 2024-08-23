@@ -622,18 +622,15 @@
                         </td>
                     </tr>
                     
-                    @endforeach
+                   
                 </table>
             
             </div>
             
         </div>
         
-       
-        <div class="text-center mt-4 no-print">
-            <a class="btn btn-primary print-btn" onclick="printPage()">Cetak</a>
         </div>
-
+        @endforeach
         
 
         <!-- Print Button -->

@@ -7,13 +7,14 @@
     <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">MAPPING MUAT & CEKLIST KONTAINER & TRAILER</h1>
     @foreach ($data as $d)
     <h4 class="app-brand-text demo menu-text fw-bold ms-1 text-center">No Gs : {{$d->no_gs}}</h4>
-    <form action="{{url('store')}}" method="POST">
+    <form action="{{ url('store/' . $d->no_gs) }}" method="POST">
         @csrf
         <div class="row">
             <!-- Basic -->
             <div class="col-md-6">
                 <div class="card mb-4">
                     <h5 class="card-header">Step 1</h5>
+                    @foreach ($pengecekan as $p)
                     <div class="card-body demo-vertical-spacing demo-only-element">
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Awal Muat</span>
@@ -24,7 +25,7 @@
                                 placeholder="09.00"
                                 aria-label="Awal Muat"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('awal_muat') }}" />
+                                value="{{ $p->awal_muat }}" />
                             @error('awal_muat')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -41,12 +42,13 @@
                                 placeholder="09.00"
                                 aria-label="Awal Muat"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('awal_muat') }}" />
+                                value="{{ $p->awal_muat1 }}" />
                             @error('awal_muat')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
-                            @enderror
+                            @enderror                   
+                    @endforeach
                         </div>
 
                         <div class="input-group">
@@ -80,7 +82,7 @@
                                 aria-describedby="basic-addon41"
                                 value="{{$d->Kepada}}" readonly />
                         </div>
-                        
+                        @foreach ($pengecekan as $p)
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Kota / Negara</span>
                             <input
@@ -90,7 +92,7 @@
                                 placeholder="Ketikan Kota / Negara tujuan"
                                 aria-label="Kota / Negara"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('kota_negara') }}" />
+                                value="{{$p->kota_negara }}" />
                             @error('kota_negara')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -103,10 +105,10 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Lantai</span>
                             <select class="form-select @error('lantai') is-invalid @enderror" name="lantai" aria-label="Floor Rating">
-                                <option value="" disabled selected>-- Pilih Kondisi Lantai --</option>
-                                <option value="bagus" {{ old('lantai') == 'bagus' ? 'selected' : '' }}>Bagus</option>
-                                <option value="kurang_bagus" {{ old('lantai') == 'kurang_bagus' ? 'selected' : '' }}>Kurang Bagus</option>
-                                <option value="jelek" {{ old('lantai') == 'jelek' ? 'selected' : '' }}>Jelek</option>
+                                <option value="" {{ old('lantai', $p->lantai) == '' ? 'selected' : '' }}>-- Pilih Kondisi Lantai --</option>
+                                <option value="bagus" {{ old('lantai', $p->lantai) == 'bagus' ? 'selected' : '' }}>Bagus</option>
+                                <option value="kurang_bagus" {{ old('lantai', $p->lantai) == 'kurang_bagus' ? 'selected' : '' }}>Kurang Bagus</option>
+                                <option value="jelek" {{ old('lantai', $p->lantai) == 'jelek' ? 'selected' : '' }}>Jelek</option>
                             </select>
                             @error('lantai')
                                 <div class="invalid-feedback">
@@ -118,10 +120,10 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Dinding</span>
                             <select class="form-select @error('dinding') is-invalid @enderror" name="dinding" aria-label="Floor Rating">
-                                <option value="" disabled selected>-- Pilih Kondisi Dinding --</option>
-                                <option value="bagus" {{ old('dinding') == 'bagus' ? 'selected' : '' }}>Bagus</option>
-                                <option value="kurang_bagus" {{ old('dinding') == 'kurang_bagus' ? 'selected' : '' }}>Kurang Bagus</option>
-                                <option value="jelek" {{ old('dinding') == 'jelek' ? 'selected' : '' }}>Jelek</option>
+                                <option value="" {{ old('dinding', $p->dinding) == '' ? 'selected' : '' }}>-- Pilih Kondisi Dinding --</option>
+                                <option value="bagus" {{ old('dinding', $p->dinding) == 'bagus' ? 'selected' : '' }}>Bagus</option>
+                                <option value="kurang_bagus" {{ old('dinding', $p->dinding) == 'kurang_bagus' ? 'selected' : '' }}>Kurang Bagus</option>
+                                <option value="jelek" {{ old('dinding', $p->dinding) == 'jelek' ? 'selected' : '' }}>Jelek</option>
                             </select>
                             @error('dinding')
                                 <div class="invalid-feedback">
@@ -133,9 +135,9 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Pengunci Kontainer</span>
                             <select class="form-select @error('pengunci_kontainer') is-invalid @enderror" name="pengunci_kontainer" aria-label="Pengunci Kontainer">
-                                <option value="" disabled selected>-- Pilih Tipe Pengunci --</option>
-                                <option value="4_pengunci" {{ old('pengunci_kontainer') == '4_pengunci' ? 'selected' : '' }}>4 Pengunci</option>
-                                <option value="<4_pengunci" {{ old('pengunci_kontainer') == '<4_pengunci' ? 'selected' : '' }}>< 4 Pengunci</option>
+                                <option value="" {{ old('pengunci_kontainer', $p->pengunci_kontainer) == '' ? 'selected' : '' }} >-- Pilih Tipe Pengunci --</option>
+                                <option value="4_pengunci" {{ old('pengunci_kontainer', $p->pengunci_kontainer) == '4_pengunci' ? 'selected' : '' }}>4 Pengunci</option>
+                                <option value="<4_pengunci" {{ old('pengunci_kontainer', $p->pengunci_kontainer) == '<4_pengunci' ? 'selected' : '' }}>< 4 Pengunci</option>
                             </select>
                             @error('pengunci_kontainer')
                                 <div class="invalid-feedback">
@@ -146,14 +148,15 @@
 
                         <div class="card demo-vertical-spacing demo-only-element">
                             <div class="row">
+                                <input type="hidden" name="sapu" value="">
                                 <div class="col-md-4">
                                     <span>Disapu</span>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuSudah" name="sapu" value="sudah" {{ old('sapu') == 'sudah' ? 'checked' : '' }} >
+                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuSudah" name="sapu" value="sudah" {{ old('sapu',$p->sapu) == 'sudah' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="sapuSudah">Sudah</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuBelum" name="sapu" value="belum" {{ old('sapu') == 'belum' ? 'checked' : '' }} >
+                                        <input class="form-check-input @error('sapu') is-invalid @enderror" type="radio" id="sapuBelum" name="sapu" value="belum" {{ old('sapu',$p->sapu) == 'belum' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="sapuBelum">Belum</label>
                                     </div>
                                     @error('sapu')
@@ -165,13 +168,14 @@
                                 
                                 
                                 <div class="col-md-4">
+                                    <input type="hidden" name="vacum" value="">
                                     <span>Vacum</span>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumSudah" name="vacum" value="sudah" {{ old('vacum') == 'sudah' ? 'checked' : '' }} >
+                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumSudah" name="vacum" value="sudah" {{ old('vacum',$p->vacum) == 'sudah' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="vacumSudah">Sudah</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumBelum" name="vacum" value="belum" {{ old('vacum') == 'belum' ? 'checked' : '' }} >
+                                        <input class="form-check-input @error('vacum') is-invalid @enderror" type="radio" id="vacumBelum" name="vacum" value="belum" {{ old('vacum',$p->vacum) == 'belum' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="vacumBelum">Belum</label>
                                     </div>
                                     @error('vacum')
@@ -181,13 +185,14 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-4">
+                                    <input type="hidden" name="disemprot" value="">
                                     <span>Disemprot</span>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotSudah" name="disemprot" value="sudah" {{ old('disemprot') == 'sudah' ? 'checked' : '' }} >
+                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotSudah" name="disemprot" value="sudah" {{ old('disemprot',$p->disemprot) == 'sudah' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="disemprotSudah">Sudah</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotBelum" name="disemprot" value="belum" {{ old('disemprot') == 'belum' ? 'checked' : '' }} >
+                                        <input class="form-check-input @error('disemprot') is-invalid @enderror" type="radio" id="disemprotBelum" name="disemprot" value="belum" {{ old('disemprot',$p->disemprot) == 'belum' ? 'checked' : '' }} >
                                         <label class="form-check-label" for="disemprotBelum">Belum</label>
                                     </div>
                                     @error('disemprot')
@@ -208,7 +213,7 @@
                                 placeholder="0"
                                 aria-label="Choke"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('choke') }}" />
+                                value="{{ $p->choke }}" />
                             @error('choke')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -225,7 +230,7 @@
                                 placeholder="0"
                                 aria-label="Stopper"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('stopper') }}" />
+                                value="{{ $p->stopper }}" />
                             @error('stopper')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -242,7 +247,7 @@
                                 placeholder="0"
                                 aria-label="Sling"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('sling') }}" />
+                                value="{{ $p->sling }}" />
                             @error('sling')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -259,7 +264,7 @@
                                 placeholder="0"
                                 aria-label="Silica Gel"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('silica_gel') }}" />
+                                value="{{ $p->silica_gel }}" />
                             @error('silica_gel')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -270,9 +275,9 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Fumigasi</span>
                             <select class="form-select @error('fumigasi') is-invalid @enderror" name="fumigasi" aria-label="Fumigasi">
-                                <option value="" disabled selected>-- Pilih Kondisi Fumigasi --</option>
-                                <option value="iya" {{ old('fumigasi') == 'iya' ? 'selected' : '' }}>Iya</option>
-                                <option value="tidak" {{ old('fumigasi') == 'tidak' ? 'selected' : '' }}>Tidak</option>
+                                <option value="" {{ old('fumigasi',$p->fumigasi) == '' ? 'selected' : '' }} >-- Pilih Kondisi Fumigasi --</option>
+                                <option value="iya" {{ old('fumigasi',$p->fumigasi) == 'iya' ? 'selected' : '' }}>Iya</option>
+                                <option value="tidak" {{ old('fumigasi',$p->fumigasi) == 'tidak' ? 'selected' : '' }}>Tidak</option>
                             </select>
                             @error('fumigasi')
                                 <div class="invalid-feedback">
@@ -299,14 +304,14 @@
                                 placeholder="10:00"
                                 aria-label="Selesai Muat"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('selesai_muat') }}" />
+                                value="{{ $p->selesai_muat }}" />
                             @error('selesai_muat')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
                         </div>
-                        
+                        @endforeach
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">No Mobil</span>
                             <input
@@ -330,14 +335,14 @@
                                 aria-describedby="basic-addon41"
                                 value="{{$d->no_container}}" readonly />
                         </div>
-
+                        @foreach ( $pengecekan as $p)
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Cuaca</span>
                             <select class="form-select @error('cuaca') is-invalid @enderror" name="cuaca" aria-label="Cuaca">
-                                <option value="" disabled selected>-- Pilih Kondisi Cuaca --</option>
-                                <option value="cerah" {{ old('cuaca') == 'cerah' ? 'selected' : '' }}>Cerah</option>
-                                <option value="berawan" {{ old('cuaca') == 'berawan' ? 'selected' : '' }}>Berawan</option>
-                                <option value="hujan" {{ old('cuaca') == 'hujan' ? 'selected' : '' }}>Hujan</option>
+                                <option value="" {{ old('cuaca',$p->cuaca) == '' ? 'selected' : '' }} >-- Pilih Kondisi Cuaca --</option>
+                                <option value="cerah" {{ old('cuaca',$p->cuaca) == 'cerah' ? 'selected' : '' }}>Cerah</option>
+                                <option value="berawan" {{ old('cuaca',$p->cuaca) == 'berawan' ? 'selected' : '' }}>Berawan</option>
+                                <option value="hujan" {{ old('cuaca',$p->cuaca) == 'hujan' ? 'selected' : '' }}>Hujan</option>
                             </select>
                             @error('cuaca')
                                 <div class="invalid-feedback">
@@ -345,7 +350,7 @@
                                 </div>
                             @enderror
                         </div>
-
+                        @endforeach
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Tonase </span>
                             <input
@@ -357,7 +362,7 @@
                                 aria-describedby="basic-addon41"
                                 value="{{$tonase}}" readonly />
                         </div>
-                        
+                        @foreach ( $pengecekan as $p)
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Tare</span>
                             <input
@@ -367,8 +372,25 @@
                                 placeholder="0"
                                 aria-label="Sling"
                                 aria-describedby="basic-addon41"
-                                value="{{ old('tare') }}" />
+                                value="{{ $p->tare }}" />
                             @error('tare')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon41">Pegawai</span>
+                            <input
+                                type="string"
+                                class="form-control @error('pegawai') is-invalid @enderror"
+                                name="pegawai"
+                                placeholder="Masukan Nama Pegawai"
+                                aria-label="pegawai"
+                                aria-describedby="basic-addon41"
+                                value="{{ $p->pegawai }}" />
+                            @error('pegawai')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -380,10 +402,10 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Kondisi Ban</span>
                             <select class="form-select @error('kondisi_ban') is-invalid @enderror" name="kondisi_ban" aria-label="Kondisi Ban">
-                                <option value="" disabled selected>-- Pilih Kondisi Ban --</option>
-                                <option value="bagus" {{ old('kondisi_ban') == 'bagus' ? 'selected' : '' }}>Bagus</option>
-                                <option value="kurang bagus" {{ old('kondisi_ban') == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
-                                <option value="kurang bagus" {{ old('kondisi_ban') == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
+                                <option value="" {{ old('kondisi_ban',$p->kondisi_ban) == '' ? 'selected' : '' }} >-- Pilih Kondisi Ban --</option>
+                                <option value="bagus" {{ old('kondisi_ban',$p->kondisi_ban) == 'bagus' ? 'selected' : '' }}>Bagus</option>
+                                <option value="kurang bagus" {{ old('kondisi_ban',$p->kondisi_ban) == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
+                                <option value="kurang bagus" {{ old('kondisi_ban',$p->kondisi_ban) == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
                             </select>
                             @error('kondisi_ban')
                                 <div class="invalid-feedback">
@@ -392,13 +414,14 @@
                             @enderror
                         </div>
                         
+                        
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Kondisi Lantai</span>
                             <select class="form-select @error('kondisi_lantai') is-invalid @enderror" name="kondisi_lantai" aria-label="Kondisi Lantai">
-                                <option value="" disabled selected>-- Pilih Kondisi Lantai --</option>
-                                <option value="bagus" {{ old('kondisi_lantai') == 'bagus' ? 'selected' : '' }}>Bagus</option>
-                                <option value="kurang bagus" {{ old('kondisi_lantai') == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
-                                <option value="kurang bagus" {{ old('kondisi_lantai') == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
+                                <option value="" {{ old('kondisi_lantai',$p->kondisi_lantai) == '' ? 'selected' : '' }} >-- Pilih Kondisi Lantai --</option>
+                                <option value="bagus" {{ old('kondisi_lantai',$p->kondisi_lantai) == 'bagus' ? 'selected' : '' }}>Bagus</option>
+                                <option value="kurang bagus" {{ old('kondisi_lantai',$p->kondisi_lantai) == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
+                                <option value="kurang bagus" {{ old('kondisi_lantai',$p->kondisi_lantai) == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
                             </select>
                             @error('kondisi_lantai')
                                 <div class="invalid-feedback">
@@ -410,10 +433,10 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Rantai Webbing</span>
                             <select class="form-select @error('rantai_webbing') is-invalid @enderror" name="rantai_webbing" aria-label="Rantai Webbing">
-                                <option value="" disabled selected>-- Pilih Kondisi Rantai/Webbing --</option>
-                                <option value="lengkap" {{ old('rantai_webbing') == 'lengkap' ? 'selected' : '' }}>Lengkap</option>
-                                <option value="tidak lengkap" {{ old('rantai_webbing') == 'tidak lengkap' ? 'selected' : '' }}>Tidak Lengkap</option>
-                                <option value="tidak ada" {{ old('rantai_webbing') == 'tidak ada' ? 'selected' : '' }}>Tidak ada</option>
+                                <option value="" >-- Pilih Kondisi Rantai/Webbing --</option>
+                                <option value="lengkap" {{ old('rantai_webbing',$p->rantai_webbing) == 'lengkap' ? 'selected' : '' }}>Lengkap</option>
+                                <option value="tidak lengkap" {{ old('rantai_webbing',$p->rantai_webbing) == 'tidak lengkap' ? 'selected' : '' }}>Tidak Lengkap</option>
+                                <option value="tidak ada" {{ old('rantai_webbing',$p->rantai_webbing) == 'tidak ada' ? 'selected' : '' }}>Tidak ada</option>
                             </select>
                             @error('rantai_webbing')
                                 <div class="invalid-feedback">
@@ -425,9 +448,9 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Tonase</span>
                             <select class="form-select @error('tonase') is-invalid @enderror" name="tonase" aria-label="Tonase">
-                                <option value="" disabled selected>-- Pilih Kondisi Tonase --</option>
-                                <option value="sesuai kapasitas" {{ old('tonase') == 'sesuai kapasitas' ? 'selected' : '' }}>Sesuai Kapasitas</option>
-                                <option value="tidak sesuai kapasitas" {{ old('tonase') == 'tidak sesuai kapasitas' ? 'selected' : '' }}>Tidak Sesuai Kapasitas</option>
+                                <option value="" >-- Pilih Kondisi Tonase --</option>
+                                <option value="sesuai kapasitas" {{ old('tonase',$p->tonase) == 'sesuai kapasitas' ? 'selected' : '' }}>Sesuai Kapasitas</option>
+                                <option value="tidak sesuai kapasitas" {{ old('tonase',$p->tonase) == 'tidak sesuai kapasitas' ? 'selected' : '' }}>Tidak Sesuai Kapasitas</option>
                             </select>
                             @error('tonase')
                                 <div class="invalid-feedback">
@@ -439,9 +462,10 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Terpal</span>
                             <select class="form-select @error('terpal') is-invalid @enderror" name="terpal" aria-label="Terpal">
-                                <option value="" disabled selected>-- Pilih Kondisi Terpal --</option>
-                                <option value="bagus" {{ old('terpal') == 'bagus' ? 'selected' : '' }}>Bagus</option>
-                                <option value="jelek" {{ old('terpal') == 'jelek' ? 'selected' : '' }}>Jelek</option>
+                                <option value=""{{ old('terpal',$p->terpal) == '' ? 'selected' : '' }} >-- Pilih Kondisi Terpal --</option>
+                                <option value="tidak ada" {{ old('terpal',$p->terpal) == 'bagus' ? 'selected' : '' }}>Tidak Ada</option>
+                                <option value="bagus" {{ old('terpal',$p->terpal) == 'bagus' ? 'selected' : '' }}>Bagus</option>
+                                <option value="jelek" {{ old('terpal',$p->terpal) == 'jelek' ? 'selected' : '' }}>Jelek</option>
                             </select>
                             @error('terpal')
                                 <div class="invalid-feedback">
@@ -450,20 +474,36 @@
                             @enderror
                         </div>
                         
-                        <div class="input-group">
-                            <span class="input-group-text" id="basic-addon41">Stuffing</span>
-                            <select class="form-select @error('stuffing') is-invalid @enderror" name="stuffing" aria-label="Stuffing">
-                                <option value="" disabled selected>-- Pilih Stuffing --</option>
-                                <option value="eye to sky" {{ old('stuffing') == 'eye to sky' ? 'selected' : '' }}>Eye to Sky</option>
-                                <option value="eye to side" {{ old('stuffing') == 'eye to side' ? 'selected' : '' }}>Eye to Side</option>
-                                <option value="eye to rear" {{ old('stuffing') == 'eye to rear' ? 'selected' : '' }}>Eye to Rear</option>
-                            </select>
-                            @error('stuffing')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                        
+                        <div class="row mb-3">
+                            <label for="signature" class="col-sm-2 col-form-label">Tanda Tangan</label>
+                            <div class="col-sm-10">
+                                <canvas id="signature-pad" class="signature-pad" width=400 height=200 style="border:1px solid #000;"></canvas>
+                                <input type="hidden" name="signature" id="signature">
+                                <button type="button" id="clear-signature" class="btn btn-secondary mt-2">Clear</button>
+                            </div>
                         </div>
+                        @endforeach       
+                        <style>.signature-pad {
+                            border: 2px solid #000;
+                            border-radius: 5px;
+                        }
+                        </style>
+                        <script>
+                            const canvas = document.getElementById('signature-pad');
+                            const signaturePad = new SignaturePad(canvas);
+                        
+                            document.getElementById('clear-signature').addEventListener('click', () => {
+                                signaturePad.clear();
+                                document.getElementById('signature').value = '';
+                            });
+                        
+                            document.querySelector('form').addEventListener('submit', (event) => {
+                                if (!signaturePad.isEmpty()) {
+                                    document.getElementById('signature').value = signaturePad.toDataURL();
+                                }
+                            });
+                        </script>
                     </div>
                 </div>
                 
@@ -480,6 +520,8 @@
                         <h3>KONTAINER</h3>
                     </div>
                 </div>
+        @foreach ($maps as $m)
+            
         
                 @csrf
                 <div class="row">
@@ -496,10 +538,11 @@
                                 class="form-select coil-select"
                                 name="{{ $coordinate }}"
                                 aria-label="Floor Rating"
+                                value="{{ old($coordinate, $m->$coordinate) }}"
                             >
                                 <option value="">Pilih</option>
                                 @foreach ($coil as $c)
-                                <option value="{{ $c->kode_produk }}">
+                                <option value="{{ $c->kode_produk }}" {{ old($coordinate, $m->$coordinate) == $c->kode_produk ? 'selected' : '' }}>
                                     {{ substr($c->kode_produk, -5) }}
                                 </option>
                                 @endforeach
@@ -509,12 +552,13 @@
                                 class="form-select ms-2"
                                 name="{{ $coordinate }}_eye"
                                 aria-label="Eye Position"
-                                disabled
+                                value="{{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) }}"
+                                
                             >
                                 <option value="">Pilih Posisi</option>
-                                <option value="eye_to_side">Eye to Side</option>
-                                <option value="eye_to_rear">Eye to Rear</option>
-                                <option value="eye_to_sky">Eye to Sky</option>
+                                <option value="eye_to_side" {{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) == 'eye_to_side' ? 'selected' : '' }}>Eye to Side</option>
+                                <option value="eye_to_rear" {{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) == 'eye_to_rear' ? 'selected' : '' }}>Eye to Rear</option>
+                                <option value="eye_to_sky" {{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) == 'eye_to_sky' ? 'selected' : '' }}>Eye to Sky</option>
                             </select>
                         </div>
                     </div>
@@ -523,14 +567,14 @@
                     @endif
                     @endfor
                 </div>
-        
+                @endforeach
                 <script>
                     document.addEventListener("DOMContentLoaded", function () {
                         const coilSelects = Array.from(document.querySelectorAll('.coil-select'));
-        
+                
                         function updateOptions() {
                             const selectedValues = coilSelects.map(select => select.value).filter(value => value);
-        
+                
                             coilSelects.forEach((select) => {
                                 const options = select.querySelectorAll("option");
                                 options.forEach((option) => {
@@ -538,22 +582,23 @@
                                         option.style.display = selectedValues.includes(option.value) && option.value !== select.value ? "none" : "";
                                     }
                                 });
-        
+                
                                 const eyeSelect = document.querySelector(`select[name="${select.name}_eye"]`);
                                 if (eyeSelect) {
                                     eyeSelect.disabled = !select.value;
                                 }
                             });
                         }
-        
+                
                         coilSelects.forEach((select) => {
                             select.addEventListener("change", updateOptions);
                         });
-        
+                
                         // Initial call to set the correct state on page load
                         updateOptions();
                     });
                 </script>
+                
         
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
             </div>
@@ -574,7 +619,13 @@
         
 
         <button type="submit" class="btn btn-primary mb-5">Simpan</button>
+            
+
     </form>
+    <a href="/prints/{{$d->no_gs}}" class="btn btn-primary mb-5">Cetak</a>
+
     @endforeach
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
 </div>
 @endsection

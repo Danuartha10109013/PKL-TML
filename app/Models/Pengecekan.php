@@ -11,6 +11,7 @@ class Pengecekan extends Model
 
         protected $fillable = [
             'awal_muat',
+            'awal_muat1',
             'kota_negara',
             'lantai',
             'dinding',
@@ -21,6 +22,7 @@ class Pengecekan extends Model
             'choke',
             'stopper',
             'silica_gel',
+            'sling',
             'fumigasi',
             'selesai_muat',
             'cuaca',
@@ -29,8 +31,9 @@ class Pengecekan extends Model
             'rantai_webbing',
             'tonase',
             'terpal',
-            'stuffing',
+            'pegawai',
             'customer',
+            'tare',
         ];
     
     

@@ -34,45 +34,20 @@
         <ul class="menu-sub">
           <li class="menu-item">
             <a
-              href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/html/vertical-menu-template/dashboards-crm.html"
-              target="_blank"
+              href="/"
               class="menu-link">
-              <div data-i18n="CRM">CRM</div>
-              <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
+              <div data-i18n="CRM">Shipment</div>
+              {{-- <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div> --}}
             </a>
           </li>
           <li class="menu-item active">
-            <a href="/shipment" class="menu-link">
-              <div data-i18n="Analytics">Shipment</div>
+            <a href="/coil" class="menu-link">
+              <div data-i18n="Analytics">Coil</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/html/vertical-menu-template/app-ecommerce-dashboard.html"
-              target="_blank"
-              class="menu-link">
-              <div data-i18n="eCommerce">eCommerce</div>
-              <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/html/vertical-menu-template/app-logistics-dashboard.html"
-              target="_blank"
-              class="menu-link">
-              <div data-i18n="Logistics">Logistics</div>
-              <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a
-              href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/html/vertical-menu-template/app-academy-dashboard.html"
-              target="_blank"
-              class="menu-link">
-              <div data-i18n="Academy">Academy</div>
-              <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div>
-            </a>
-          </li>
+          
+          
+          
         </ul>
       </li>
 
