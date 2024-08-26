@@ -10,6 +10,7 @@ class Pengecekan extends Model
     protected $table = 'pengecekan';
 
         protected $fillable = [
+            'pembeda',
             'awal_muat',
             'awal_muat1',
             'kota_negara',
@@ -34,7 +35,23 @@ class Pengecekan extends Model
             'pegawai',
             'customer',
             'tare',
+            'catatan',
+            'tgl_gs',
+            'no_mobil',
+            'no_container',
+            'tonase_tare',
         ];
     
-    
+    // Pada Model P dan M
+public function isComplete()
+{
+    // Asumsikan $this->attribute adalah array atribut yang ingin dicek
+    foreach ($this->attributes as $attribute) {
+        if (is_null($attribute) || $attribute === '') {
+            return false;
+        }
+    }
+    return true;
+}
+
 }

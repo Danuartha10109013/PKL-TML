@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="container-xxl">
-    <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">MAPPING MUAT & CEKLIST KONTAINER</h1>
+    <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">MAPPING MUAT & CEKLIST TRAILER</h1>
     @foreach ($data as $d)
     <h4 class="app-brand-text demo menu-text fw-bold ms-1 text-center">No Gs : {{$d->no_gs}}</h4>
-    <form action="{{ url('store/' . $d->no_gs) }}" method="POST">
+    <form action="{{ url('store-truck/' . $d->no_gs) }}" method="POST">
         @csrf
         <div class="row">
             <!-- Basic -->
@@ -59,7 +59,7 @@
                                 name="pembeda"
                                 aria-label="Username"
                                 aria-describedby="basic-addon41"
-                                value="container" hidden />
+                                value="trailer" hidden />
                         </div>
 
                         <div class="input-group">
@@ -496,7 +496,7 @@
         </div>
 
         <h1 class="app-brand-text demo menu-text fw-bold ms-1 text-center">
-            MAPPING KONTAINER
+            MAPPING TRUCK
         </h1>
         <div class="row mb-5">
             <div class="col-md-12">
@@ -505,84 +505,111 @@
                         <h3>KONTAINER</h3>
                     </div>
                 </div>
-        @foreach ($maps as $m)
-            
-        
+                @foreach ($maps as $m)
                 @csrf
-                <div class="row">
-                    @for ($i = 0; $i < 15; $i++)
-                    <div class="col-md-4 mb-3">
-                        <div class="input-group">
-                            @php
-                                $row = intdiv($i, 3) + 1;
-                                $column = chr(65 + ($i % 3)); // A, B, C
-                                $coordinate = strtolower($column . $row); // a1, a2, ..., c5
-                            @endphp
-                            <label class="fw-bold mb-1">{{ strtoupper($coordinate) }}</label>
-                            <select
-                                class="form-select coil-select"
-                                name="{{ $coordinate }}"
-                                aria-label="Floor Rating"
-                                value="{{ old($coordinate, $m->$coordinate) }}"
-                            >
-                                <option value="">Pilih</option>
-                                @foreach ($coil as $c)
-                                <option value="{{ $c->kode_produk }}" {{ old($coordinate, $m->$coordinate) == $c->kode_produk ? 'selected' : '' }}>
-                                    {{ substr($c->kode_produk, -5) }}
-                                </option>
-                                @endforeach
-                            </select>
-                            <input type="hidden" name="{{ $coordinate }}_eye" value="null">
-                            <select
-                                class="form-select ms-2"
-                                name="{{ $coordinate }}_eye"
-                                aria-label="Eye Position"
-                                value="{{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) }}"
-                                
-                            >
-                                <option value="">Pilih Posisi</option>
-                                <option value="eye_to_side" {{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) == 'eye_to_side' ? 'selected' : '' }}>Eye to Side</option>
-                                <option value="eye_to_rear" {{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) == 'eye_to_rear' ? 'selected' : '' }}>Eye to Rear</option>
-                                <option value="eye_to_sky" {{ old($coordinate . '_eye', $m->{$coordinate . '_eye'}) == 'eye_to_sky' ? 'selected' : '' }}>Eye to Sky</option>
-                            </select>
+                <div class="container">
+                    @for ($i = 1; $i <= 12; $i++)
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                @php
+                                    $coordinateA = 'a' . $i;
+                                    $coordinateB = 'b' . $i;
+                                @endphp
+                                <label class="fw-bold mb-1">{{ strtoupper($coordinateA) }}</label>
+                                <select
+                                    class="form-select coil-select"
+                                    name="{{ $coordinateA }}"
+                                    aria-label="Floor Rating"
+                                    value="{{ old($coordinateA, $m->$coordinateA) }}"
+                                >
+                                    <option value="">Pilih</option>
+                                    @foreach ($coil as $c)
+                                    <option value="{{ $c->kode_produk }}" {{ old($coordinateA, $m->$coordinateA) == $c->kode_produk ? 'selected' : '' }}>
+                                        {{ substr($c->kode_produk, -5) }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                <input type="hidden" name="{{ $coordinateA }}_eye" value="null">
+                                <select
+                                    class="form-select ms-2"
+                                    name="{{ $coordinateA }}_eye"
+                                    aria-label="Eye Position"
+                                    value="{{ old($coordinateA . '_eye', $m->{$coordinateA . '_eye'}) }}"
+                                >
+                                    <option value="">Pilih Posisi</option>
+                                    <option value="eye_to_side" {{ old($coordinateA . '_eye', $m->{$coordinateA . '_eye'}) == 'eye_to_side' ? 'selected' : '' }}>Eye to Side</option>
+                                    <option value="eye_to_rear" {{ old($coordinateA . '_eye', $m->{$coordinateA . '_eye'}) == 'eye_to_rear' ? 'selected' : '' }}>Eye to Rear</option>
+                                    <option value="eye_to_sky" {{ old($coordinateA . '_eye', $m->{$coordinateA . '_eye'}) == 'eye_to_sky' ? 'selected' : '' }}>Eye to Sky</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <label class="fw-bold mb-1">{{ strtoupper($coordinateB) }}</label>
+                                <select
+                                    class="form-select coil-select"
+                                    name="{{ $coordinateB }}"
+                                    aria-label="Floor Rating"
+                                    value="{{ old($coordinateB, $m->$coordinateB) }}"
+                                >
+                                    <option value="">Pilih</option>
+                                    @foreach ($coil as $c)
+                                    <option value="{{ $c->kode_produk }}" {{ old($coordinateB, $m->$coordinateB) == $c->kode_produk ? 'selected' : '' }}>
+                                        {{ substr($c->kode_produk, -5) }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                                <input type="hidden" name="{{ $coordinateB }}_eye" value="null">
+                                <select
+                                    class="form-select ms-2"
+                                    name="{{ $coordinateB }}_eye"
+                                    aria-label="Eye Position"
+                                    value="{{ old($coordinateB . '_eye', $m->{$coordinateB . '_eye'}) }}"
+                                >
+                                    <option value="">Pilih Posisi</option>
+                                    <option value="eye_to_side" {{ old($coordinateB . '_eye', $m->{$coordinateB . '_eye'}) == 'eye_to_side' ? 'selected' : '' }}>Eye to Side</option>
+                                    <option value="eye_to_rear" {{ old($coordinateB . '_eye', $m->{$coordinateB . '_eye'}) == 'eye_to_rear' ? 'selected' : '' }}>Eye to Rear</option>
+                                    <option value="eye_to_sky" {{ old($coordinateB . '_eye', $m->{$coordinateB . '_eye'}) == 'eye_to_sky' ? 'selected' : '' }}>Eye to Sky</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    @if (($i + 1) % 3 == 0)
-                    <div class="w-100"></div>
-                    @endif
                     @endfor
                 </div>
-                @endforeach
-                <script>
-                    document.addEventListener("DOMContentLoaded", function () {
-                        const coilSelects = Array.from(document.querySelectorAll('.coil-select'));
-                
-                        function updateOptions() {
-                            const selectedValues = coilSelects.map(select => select.value).filter(value => value);
-                
-                            coilSelects.forEach((select) => {
-                                const options = select.querySelectorAll("option");
-                                options.forEach((option) => {
-                                    if (option.value !== "") {
-                                        option.style.display = selectedValues.includes(option.value) && option.value !== select.value ? "none" : "";
-                                    }
-                                });
-                
-                                const eyeSelect = document.querySelector(`select[name="${select.name}_eye"]`);
-                                if (eyeSelect) {
-                                    eyeSelect.disabled = !select.value;
-                                }
-                            });
-                        }
-                
-                        coilSelects.forEach((select) => {
-                            select.addEventListener("change", updateOptions);
+            @endforeach
+            
+            <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const coilSelects = Array.from(document.querySelectorAll('.coil-select'));
+            
+                function updateOptions() {
+                    const selectedValues = coilSelects.map(select => select.value).filter(value => value);
+            
+                    coilSelects.forEach((select) => {
+                        const options = select.querySelectorAll("option");
+                        options.forEach((option) => {
+                            if (option.value !== "") {
+                                // Sembunyikan opsi yang sudah dipilih di dropdown lain
+                                option.style.display = selectedValues.includes(option.value) && option.value !== select.value ? "none" : "";
+                            }
                         });
-                
-                        // Initial call to set the correct state on page load
-                        updateOptions();
+            
+                        const eyeSelect = document.querySelector(`select[name="${select.name}_eye"]`);
+                        if (eyeSelect) {
+                            eyeSelect.disabled = !select.value;
+                        }
                     });
-                </script>
+                }
+            
+                coilSelects.forEach((select) => {
+                    select.addEventListener("change", updateOptions);
+                });
+            
+                // Initial call to set the correct state on page load
+                updateOptions();
+            });
+        </script>
                 
         
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -608,7 +635,7 @@
         <button type="submit" class="btn btn-primary mb-5">Simpan</button>
             
         @if($p->isComplete())
-    <a href="/prints/{{$d->no_gs}}" class="btn btn-danger mb-5">Cetak</a>
+    <a href="/prints-truck/{{$d->no_gs}}" class="btn btn-danger mb-5">Cetak</a>
 @else
     <p><b>Lengkapi semua data untuk mencetak.</b></p>
 @endif

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coil;
 use App\Models\MapCoil;
+use App\Models\MapCoilTruck;
 use App\Models\Pengecekan;
 use App\Models\Shipment;
 use Illuminate\Http\Request;
@@ -25,9 +26,10 @@ class DashboardController extends Controller
         $data = Shipment::where('id',$id)->get();
         $same = Shipment::where('id',$id)->value('no_gs');
         $coil = Coil::where('no_gs', $same)->get();
+        $pengecekan = Pengecekan::where('no_gs',$same)->value('pembeda');
     
         // Mengembalikan view dengan data Shipment yang diambil
-        return view('content.dashboard.index', compact('data','coil'));
+        return view('content.dashboard.index', compact('data','coil','pengecekan'));
     }
 
     public function create(){
@@ -86,6 +88,10 @@ class DashboardController extends Controller
         $pengecekan->save();
 
         $mapcoil = new MapCoil;
+        $mapcoil->no_gs = $validatedData['no_gs']; 
+        $mapcoil->save();
+
+        $mapcoil = new MapCoilTruck();
         $mapcoil->no_gs = $validatedData['no_gs']; 
         $mapcoil->save();
 

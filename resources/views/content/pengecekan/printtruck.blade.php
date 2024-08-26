@@ -53,6 +53,9 @@
         .no-print {
             display: block;
         }
+        .section{
+            margin-top: -16px;
+        }
         
             
         
@@ -85,20 +88,24 @@
         </style>
         
         <div class="header">
-            <img style="width: 10%" src="{{asset('img/Logo_TML.png')}}" alt="Logo">
+            <img style="width: 7%" src="{{asset('img/Logo_TML.png')}}" alt="Logo">
             <div>
-                <h3><strong>Mapping Muat & Ceklist Kontainer</strong></h3>
+                <h4 style="margin-bottom: -5px"><strong>Mapping Muat & Ceklist Kontainer</strong></h4>
                 <p class="text-start"><b>No. GS: {{$d->no_gs}}</b></p>
             </div>
         </div>
         
         
-        <hr>
-        <p class="text-center"><strong>PENGECEKAN</strong></p>
-        
-        
+        <hr style="margin-top: -3px">
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+        <p class="text-center" style="margin-top: -15px"><strong>PENGECEKAN</strong></p>
 
-        
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+
         <div class="row">
             <div style="flex: 1; margin-right: 10px;">
                 <div class="section">
@@ -124,7 +131,7 @@
                 </div>
 
                 <div class="section">
-                    <p><strong>KONTAINER / TRAILER / TRUK</strong></p>
+                    <p style="margin-bottom: -5px"><strong>KONTAINER / TRAILER / TRUK</strong></p>
                     <table>
                         <tr>
                             <th>Lantai</th>
@@ -202,7 +209,7 @@
                 </div>
 
                 <div class="section">
-                    <p><strong>TRAILER / TRUK</strong></p>
+                    <p style="margin-bottom: -5px"><strong>TRAILER / TRUK</strong></p>
                     <table>
                         <tr>
                             <th>Kondisi Ban</th>
@@ -248,16 +255,17 @@
             </div>
         </div>
         @endforeach
-        <hr>
-        <div class="row cc">
+        <hr style="margin-top: -15px">
+        <div style="margin-top: -10px" class="row cc">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <div class="text-center mb-3" style="border: 1px solid #000000; max-width:90%" class="kotak">
-                    <p class="mt-2"><b >KONTAINER</b></p>
+                <div class="text-center mb-2" style="border: 1px solid #000000; max-width:90%; max-height: 50%" class="kotak">
+                    <p class="mt-1"><b >KONTAINER</b></p>
                 </div>
                 <style>
                      .mapping {
             width: 90%;
+            height: 20px;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
@@ -276,12 +284,18 @@
     }
     .cc, .mapping {
         /* display: none;  */
-        margin-left: 30px
+        margin-left: 30px;
     }
     .mapping{
-        /* display: none */
+        /* display: none; */
         margin-left: -0.07em;
+        height:10%
+
     }
+    .mapping .kiri tr {
+    height: 30px;
+    display: none /* Sesuaikan dengan ketinggian yang diinginkan */
+}
 
 }
 
@@ -294,9 +308,9 @@
                     <tr>
                         <td width="100px">
                             @if($c->a1)
-                               <p class="mt-1"><b> {{ $c->a1 }} </b></p>
+                               <p style="margin-top: -9px"><b> {{ $c->a1 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->a1_eye.'.png')}}" alt="{{$c->a1_eye}}">
+                               <img style="margin-top: -30px;margin-bottom:-30px" width="16%" src="{{asset('img/'.$c->a1_eye.'.png')}}" alt="{{$c->a1_eye}}">
                             @else
                             {{ $c->a1 }}
                             @endif
@@ -304,32 +318,23 @@
                         
                         <td width="100px">
                             @if($c->b1)
-                               <p class="mt-2"><b> {{ $c->b1 }} </b></p>
+                               <p><b>{{ $c->b1 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->b1_eye.'.png')}}" alt="{{$c->b1_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b1_eye.'.png')}}" alt="{{$c->b1_eye}}">
                             @else
                             {{ $c->b1 }}
                             @endif
                         </td>
 
-                        <td width="100px">
-                            @if($c->c1)
-                               <p class="mt-2"><b> {{ $c->c1 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$c->c1_eye.'.png')}}" alt="{{$c->c1_eye}}">
-                            @else
-                            {{ $c->c1 }}
-                            @endif
-                        </td>
                        
                     </tr>
 
                     <tr>
                         <td>
                             @if($c->a2)
-                               <p class="mt-2"><b> {{ $c->a2 }} </b></p>
+                               <p><b>{{ $c->a2 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->a2_eye.'.png')}}" alt="{{$c->a2_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a2_eye.'.png')}}" alt="{{$c->a2_eye}}">
                             @else
                             {{ $c->a2 }}
                             @endif
@@ -337,29 +342,21 @@
                         
                         <td>
                             @if($c->b2)
-                               <p class="mt-2"><b> {{ $c->b2 }} </b></p>
+                               <p><b>{{ $c->b2 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->b2_eye.'.png')}}" alt="{{$c->b2_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b2_eye.'.png')}}" alt="{{$c->b2_eye}}">
                             @else
                             {{ $c->b2 }}
                             @endif
                         </td>
-                        <td>
-                            @if($c->c2)
-                               <p class="mt-2"><b> {{ $c->c2 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$c->c2_eye.'.png')}}" alt="{{$c->c2_eye}}">
-                            @else
-                            {{ $c->c2 }}
-                            @endif
-                        </td>
+
                     </tr>
                     <tr>
                         <td>
                             @if($c->a3)
-                               <p class="mt-2"><b> {{ $c->a3 }} </b></p>
+                               <p><b>{{ $c->a3 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->a3_eye.'.png')}}" alt="{{$c->a3_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a3_eye.'.png')}}" alt="{{$c->a3_eye}}">
                             @else
                             {{ $c->a3 }}
                             @endif
@@ -367,48 +364,32 @@
                         
                         <td>
                             @if($c->b3)
-                               <p class="mt-2"><b> {{ $c->b3 }} </b></p>
+                               <p><b>{{ $c->b3 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->b3_eye.'.png')}}" alt="{{$c->b3_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b3_eye.'.png')}}" alt="{{$c->b3_eye}}">
                             @else
                             {{ $c->b3 }}
                             @endif
                         </td>
-                        <td>
-                            @if($c->c3)
-                               <p class="mt-2"><b> {{ $c->c3 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$c->c3_eye.'.png')}}" alt="{{$c->c3_eye}}">
-                            @else
-                            {{ $c->c3 }}
-                            @endif
-                        </td>
+
                     </tr>
                     <tr>
                         <td>
                             @if($c->a4)
-                               <p class="mt-2"><b> {{ $c->a4 }} </b></p>
+                               <p><b>{{ $c->a4 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->a4_eye.'.png')}}" alt="{{$c->a4_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a4_eye.'.png')}}" alt="{{$c->a4_eye}}">
                             @else
                             {{ $c->a4 }}
                             @endif
                         </td>
                         
-                        <td>
-                            @if($c->b4)
-                               <p class="mt-2"><b> {{ $c->b4 }} </b></p>
-                               
-                               <img width="30%" src="{{asset('img/'.$c->b4_eye.'.png')}}" alt="{{$c->b4_eye}}">
-                            @else
-                            {{ $c->b4 }}
-                            @endif
-                        </td>
+
                         <td>
                             @if($c->c4)
-                               <p class="mt-2"><b> {{ $c->c4 }} </b></p>
+                               <p><b>{{ $c->c4 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->c4_eye.'.png')}}" alt="{{$c->c4_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->c4_eye.'.png')}}" alt="{{$c->c4_eye}}">
                             @else
                             {{ $c->c4 }}
                             @endif
@@ -417,9 +398,9 @@
                     <tr>
                         <td>
                             @if($c->a5)
-                               <p class="mt-2"><b> {{ $c->a5 }} </b></p>
+                               <p><b>{{ $c->a5 }} </b></p>
                               
-                               <img width="30%" src="{{asset('img/'.$c->a5_eye.'.png')}}" alt="{{$c->a5_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a5_eye.'.png')}}" alt="{{$c->a5_eye}}">
                             @else
                             {{ $c->a5 }}
                             @endif
@@ -427,29 +408,182 @@
                         
                         <td>
                             @if($c->b5)
-                               <p class="mt-2"><b> {{ $c->b5 }} </b></p>
+                               <p><b>{{ $c->b5 }} </b></p>
                                
-                               <img width="30%" src="{{asset('img/'.$c->b5_eye.'.png')}}" alt="{{$c->b5_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b5_eye.'.png')}}" alt="{{$c->b5_eye}}">
                             @else
                             {{ $c->b5 }}
                             @endif
                         </td>
+
+                        
+                    </tr>
+                    <tr>
                         <td>
-                            @if($c->c5)
-                               <p class="mt-2"><b> {{ $c->c5 }} </b></p>
+                            @if($c->a6)
+                               <p><b>{{ $c->a6 }} </b></p>
                               
-                               <img width="30%" src="{{asset('img/'.$c->c5_eye.'.png')}}" alt="{{$c->c5_eye}}">
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a6_eye.'.png')}}" alt="{{$c->a6_eye}}">
                             @else
-                            {{ $c->c5 }}
+                            {{ $c->a6 }}
                             @endif
                         </td>
+                        
+                        <td>
+                            @if($c->b6)
+                               <p><b>{{ $c->b6 }} </b></p>
+                               
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b6_eye.'.png')}}" alt="{{$c->b6_eye}}">
+                            @else
+                            {{ $c->b6 }}
+                            @endif
+                        </td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            @if($c->a7)
+                               <p><b>{{ $c->a7 }} </b></p>
+                              
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a7_eye.'.png')}}" alt="{{$c->a7_eye}}">
+                            @else
+                            {{ $c->a7 }}
+                            @endif
+                        </td>
+                        
+                        <td>
+                            @if($c->b7)
+                               <p><b>{{ $c->b7 }} </b></p>
+                               
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b7_eye.'.png')}}" alt="{{$c->b7_eye}}">
+                            @else
+                            {{ $c->b7 }}
+                            @endif
+                        </td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            @if($c->a8)
+                               <p><b>{{ $c->a8 }} </b></p>
+                              
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a8_eye.'.png')}}" alt="{{$c->a8_eye}}">
+                            @else
+                            {{ $c->a8 }}
+                            @endif
+                        </td>
+                        
+                        <td>
+                            @if($c->b8)
+                               <p><b>{{ $c->b8 }} </b></p>
+                               
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b8_eye.'.png')}}" alt="{{$c->b8_eye}}">
+                            @else
+                            {{ $c->b8 }}
+                            @endif
+                        </td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            @if($c->a9)
+                               <p><b>{{ $c->a9 }} </b></p>
+                              
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a9_eye.'.png')}}" alt="{{$c->a9_eye}}">
+                            @else
+                            {{ $c->a9 }}
+                            @endif
+                        </td>
+                        
+                        <td>
+                            @if($c->b9)
+                               <p><b>{{ $c->b9 }} </b></p>
+                               
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b9_eye.'.png')}}" alt="{{$c->b9_eye}}">
+                            @else
+                            {{ $c->b9 }}
+                            @endif
+                        </td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            @if($c->a10)
+                               <p><b>{{ $c->a10 }} </b></p>
+                              
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a10_eye.'.png')}}" alt="{{$c->a10_eye}}">
+                            @else
+                            {{ $c->a10 }}
+                            @endif
+                        </td>
+                        
+                        <td>
+                            @if($c->b10)
+                               <p><b>{{ $c->b10 }} </b></p>
+                               
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b10_eye.'.png')}}" alt="{{$c->b10_eye}}">
+                            @else
+                            {{ $c->b10 }}
+                            @endif
+                        </td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            @if($c->a11)
+                               <p><b>{{ $c->a11 }} </b></p>
+                              
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a11_eye.'.png')}}" alt="{{$c->a11_eye}}">
+                            @else
+                            {{ $c->a11 }}
+                            @endif
+                        </td>
+                        
+                        <td>
+                            @if($c->b11)
+                               <p><b>{{ $c->b11 }} </b></p>
+                               
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b11_eye.'.png')}}" alt="{{$c->b11_eye}}">
+                            @else
+                            {{ $c->b11 }}
+                            @endif
+                        </td>
+
+                        
+                    </tr>
+                    <tr>
+                        <td>
+                            @if($c->a12)
+                               <p><b>{{ $c->a12 }} </b></p>
+                              
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->a12_eye.'.png')}}" alt="{{$c->a12_eye}}">
+                            @else
+                            {{ $c->a12 }}
+                            @endif
+                        </td>
+                        
+                        <td>
+                            @if($c->b12)
+                               <p><b>{{ $c->b12 }} </b></p>
+                               
+                               <img style="margin-top: -25px;margin-bottom:-20px" width="16%" src="{{asset('img/'.$c->b12_eye.'.png')}}" alt="{{$c->b12_eye}}">
+                            @else
+                            {{ $c->b12 }}
+                            @endif
+                        </td>
+
                         
                     </tr>
                     
                     
                     @endforeach
                 </table>
-            <p class="text-start" style="font-size: 9px"><small style="color: red">*</small>Mapping ini mereferensikan layout koil saat berada di dalam kontainer dari <b>Tampak Atas</b></p>
+                <p  class="text-start" style="font-size: 9px;margin-top: -25px"><small style="color: red">*</small>Mapping ini mereferensikan layout koil saat berada di dalam kontainer dari <b>Tampak Atas</b></p>
             </div>
             
             

@@ -6,6 +6,7 @@ use \Mpdf\Mpdf;
 
 use App\Models\Coil;
 use App\Models\MapCoil;
+use App\Models\MapCoilTruck;
 use App\Models\Pengecekan;
 use App\Models\Shipment;
 // use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
@@ -48,5 +49,12 @@ if (file_exists($viewPath)) {
         $img = Coil::where('no_gs',$id)->pluck('keterangan');
         
         return view('content.pengecekan.print', compact('data','coil', ));
+    }
+    public function printtruck($id){
+        $data=Pengecekan::where('no_gs',$id)->get();
+        $coil=MapCoilTruck::where('no_gs', $id)->get();
+        $img = Coil::where('no_gs',$id)->pluck('keterangan');
+        
+        return view('content.pengecekan.printtruck', compact('data','coil', ));
     }
 }
