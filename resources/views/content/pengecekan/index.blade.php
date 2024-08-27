@@ -414,6 +414,7 @@
                             <span class="input-group-text" id="basic-addon41">Kondisi Ban</span>
                             <select class="form-select @error('kondisi_ban') is-invalid @enderror" name="kondisi_ban" aria-label="Kondisi Ban">
                                 <option value="" {{ old('kondisi_ban',$p->kondisi_ban) == '' ? 'selected' : '' }} >-- Pilih Kondisi Ban --</option>
+                                <option value="-" {{ old('kondisi_ban',$p->kondisi_ban) == '-' ? 'selected' : '' }}>-</option>
                                 <option value="bagus" {{ old('kondisi_ban',$p->kondisi_ban) == 'bagus' ? 'selected' : '' }}>Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_ban',$p->kondisi_ban) == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_ban',$p->kondisi_ban) == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
@@ -430,6 +431,7 @@
                             <span class="input-group-text" id="basic-addon41">Kondisi Lantai</span>
                             <select class="form-select @error('kondisi_lantai') is-invalid @enderror" name="kondisi_lantai" aria-label="Kondisi Lantai">
                                 <option value="" {{ old('kondisi_lantai',$p->kondisi_lantai) == '' ? 'selected' : '' }} >-- Pilih Kondisi Lantai --</option>
+                                <option value="-" {{ old('kondisi_lantai',$p->kondisi_lantai) == '-' ? 'selected' : '' }}>-</option>
                                 <option value="bagus" {{ old('kondisi_lantai',$p->kondisi_lantai) == 'bagus' ? 'selected' : '' }}>Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_lantai',$p->kondisi_lantai) == 'kurang bagus' ? 'selected' : '' }}>Kurang Bagus</option>
                                 <option value="kurang bagus" {{ old('kondisi_lantai',$p->kondisi_lantai) == 'kurang bagus' ? 'selected' : '' }}>Jelek</option>
@@ -469,14 +471,14 @@
                                 </div>
                             @enderror
                         </div>
-                        
+                       
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon41">Terpal</span>
                             <select class="form-select @error('terpal') is-invalid @enderror" name="terpal" aria-label="Terpal">
-                                <option value=""{{ old('terpal',$p->terpal) == '' ? 'selected' : '' }} >-- Pilih Kondisi Terpal --</option>
-                                <option value="tidak ada" {{ old('terpal',$p->terpal) == 'bagus' ? 'selected' : '' }}>Tidak Ada</option>
-                                <option value="bagus" {{ old('terpal',$p->terpal) == 'bagus' ? 'selected' : '' }}>Bagus</option>
-                                <option value="jelek" {{ old('terpal',$p->terpal) == 'jelek' ? 'selected' : '' }}>Jelek</option>
+                                <option value="" {{ old('terpal', $p->terpal) == '' ? 'selected' : '' }}>-- Pilih Kondisi Terpal --</option>
+                                <option value="tidak ada" {{ old('terpal', $p->terpal) == 'tidak ada' ? 'selected' : '' }}>Tidak Ada</option>
+                                <option value="bagus" {{ old('terpal', $p->terpal) == 'bagus' ? 'selected' : '' }}>Bagus</option>
+                                <option value="jelek" {{ old('terpal', $p->terpal) == 'jelek' ? 'selected' : '' }}>Jelek</option>
                             </select>
                             @error('terpal')
                                 <div class="invalid-feedback">
@@ -484,6 +486,7 @@
                                 </div>
                             @enderror
                         </div>
+                        
                         
                         
                         
