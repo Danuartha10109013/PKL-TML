@@ -29,26 +29,22 @@
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
           <div data-i18n="Dashboards">Dashboards</div>
-          <div class="badge bg-danger rounded-pill ms-auto">5</div>
+          <div class="badge bg-danger rounded-pill ms-auto"></div>
         </a>
         <ul class="menu-sub">
-          <li class="menu-item">
-            <a
-              href="/"
-              class="menu-link">
-              <div data-i18n="CRM">Shipment</div>
-              {{-- <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div> --}}
-            </a>
+          <li class="menu-item {{ request()->is('/') ? 'active' : '' }}">
+              <a href="/" class="menu-link">
+                  <div data-i18n="CRM">Shipment</div>
+                  {{-- <div class="badge bg-label-primary fs-tiny rounded-pill ms-auto">Pro</div> --}}
+              </a>
           </li>
-          <li class="menu-item active">
-            <a href="/coil" class="menu-link">
-              <div data-i18n="Analytics">Coil</div>
-            </a>
+          <li class="menu-item {{ request()->is('coil') ? 'active' : '' }}">
+              <a href="/coil" class="menu-link">
+                  <div data-i18n="Analytics">Coil</div>
+              </a>
           </li>
-          
-          
-          
-        </ul>
+      </ul>
+      
       </li>
 
      

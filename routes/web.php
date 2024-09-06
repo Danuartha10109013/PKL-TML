@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CoilController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InputDataExcel;
 use App\Http\Controllers\MappingController;
 use App\Http\Controllers\MappingTrukController;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +43,10 @@ Route::post('/store/{no_gs}', [MappingController::class, 'store']);
 Route::get('/print/{id}', [PrintController::class, 'view_pdf'])->name('print');
 Route::get('/prints/{id}', [PrintController::class, 'print'])->name('prints');
 Route::get('/prints-truck/{id}', [PrintController::class, 'printtruck'])->name('prints');
+
+// Input Data Excel
+Route::get('/input-excel', [InputDataExcel::class, 'index'])->name('input-excel');
+Route::post('/upload-excel', [InputDataExcel::class, 'store'])->name('upload-excel');
+Route::post('/upload-koil-excel', [InputDataExcel::class, 'storekoil'])->name('upload-koil-excel');
 
 

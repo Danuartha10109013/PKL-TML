@@ -7,10 +7,16 @@
 @section('content')
 <div class="container-xxl">
     <h3 class="title text-center">DATA COIL</h3>
-
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
 
 <div class="col-12">
     <div class="card">
+      
       <div class="table-responsive">
         <table class="table">
           <thead class="table-light">
